@@ -6,11 +6,10 @@
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <!-- For Social Icons: <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
+
   <body>
   <div class="navbar-fixed">
     <nav class="teal">
@@ -41,7 +40,8 @@
 
     <div class="container">
     <%= yield %>
-  </div>
+    </div>
   <%= javascript_include_tag 'application' %>
+
   </body>
 </html>

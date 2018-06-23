@@ -1,10 +1,26 @@
-<h3><%= @zip.id %></h3>
-<h5>Located in: <%= @zip.state.abbreviation %></h5>
-<h5>Number of Returns: <%= @zip.n1 %></h5>
-<h5>Percent Single: <%= @zip.percent_single %></h5>
-<h5>Percent Joint File: <%= @zip.percent_joint %></h5>
-<h5>Percent HOH: <%= @zip.percent_hoh %></h5>
-<h5>Percent Paid Prep: <%= @zip.percent_paid_prep %></h5>
-<h5>Average Number of Dependents: <%= @zip.average_dependents %></h5>
-<h5>Percent Elderly: <%= @zip.percent_elderly %></h5>
-<h5>Mean Adjusted Gross Income*: <%= @zip.mean_income %></h5>
+<h3 class="center"><%= @zip.id %></h3>
+<h6>Located in: <%= @zip.state.abbreviation %></h6>
+<h6>Number of Returns: <%= @zip.n1 %></h6>
+<h6>Percent Single: <%= @zip.percent_single %></h6>
+<h6>Percent Joint File: <%= @zip.percent_joint %></h6>
+<h6>Percent HOH: <%= @zip.percent_hoh %></h6>
+<h6>Percent Paid Prep: <%= @zip.percent_paid_prep %></h6>
+<h6>Average Number of Dependents: <%= @zip.average_dependents %></h6>
+<h6>Percent Elderly: <%= @zip.percent_elderly %></h6>
+<h6>Mean Adjusted Gross Income*: <%= @zip.mean_income %></h6>
+
+<div id="map"></div>
+
+<script>
+console.log(<%= @coords["lat"] %>);
+function initMap() {
+  console.log(<%= @coords["lng"] %>);
+  var options = {
+    zoom: 13,
+    center: {lat: <%= @coords["lat"] %>, lng: <%= @coords["lng"] %>}
+  }
+  console.log(options);
+  var map = new google.maps.Map(document.querySelector('#map'), options);
+}
+</script>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>

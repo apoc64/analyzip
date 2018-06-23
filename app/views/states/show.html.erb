@@ -1,4 +1,4 @@
-<h3><%= @state.abbreviation %></h3>
+<h3 class="center"><%= @state.abbreviation %></h3>
 
 <% @zips.each do |zip| %>
   <%= link_to zip.id, zip_path(zip) %>
