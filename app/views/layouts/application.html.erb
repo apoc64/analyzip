@@ -20,22 +20,16 @@
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="/states">States</a></li>
-            <!-- <li><a href="#search">Search</a></li>
-            <li><a href="#popular">Popular Places</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li> -->
+            <li><%= link_to "States", states_path %></li>
+            <li><%= link_to "Zip Codes", zips_path %></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
   <ul class="sidenav" id="mobile-nav">
-    <li><a href="/states">States</a></li>
-    <!-- <li><a href="#search">Search</a></li>
-    <li><a href="#popular">Popular Places</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li> -->
+    <li><%= link_to "States", states_path %></li>
+    <li><%= link_to "Zip Codes", zips_path %></li>
   </ul>
 
     <div class="container">

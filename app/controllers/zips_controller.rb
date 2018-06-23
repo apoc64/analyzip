@@ -1,4 +1,10 @@
 class ZipsController < ApplicationController
+  def index
+    @high_incomes = Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income DESC').limit(10)
+    @low_incomes = Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)
+    @highest_pops = Zip.select('id, n1').order('n1 DESC').limit(10)
+    # binding.pry
+  end
 
   def show
     @zip = Zip.find(params[:id])

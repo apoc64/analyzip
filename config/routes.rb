@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :states, only: [:index, :show]
 
-  resources :zips, only: [:show]
+  resources :zips, only: [:index, :show]
 end
