@@ -13,3 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+const sideNav = document.querySelector('.sidenav');
+M.Sidenav.init(sideNav, {});
