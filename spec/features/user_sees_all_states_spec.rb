@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'user visits states page' do
   it 'shows all states' do
-    state1 = State.create(abbreviation: 'CA')
-    state2 = State.create(abbreviation: 'CO')
+    state1 = create(:state)
+    state2 = State.create(abbreviation: 'CA')
 
     visit states_path
 
