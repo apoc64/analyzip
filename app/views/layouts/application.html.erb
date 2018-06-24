@@ -7,15 +7,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
   <body>
   <div class="navbar-fixed">
-    <nav class="teal">
+    <nav class="teal darken-4">
       <div class="container">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Zip Code Analyzer</a>
+          <a href="/" class="brand-logo">Zip Code Analyzer</a>
           <a href="#" data-target="mobile-nav" class="sidenav-trigger">
             <i class="material-icons">menu</i>
           </a>
@@ -32,10 +32,15 @@
     <li><%= link_to "Zip Codes", zips_path %></li>
   </ul>
 
-    <div class="container">
+  <div class="container">
     <%= yield %>
-    </div>
+  </div>
+
+  <footer class="teal darken-4 white-text center">
+    <p>Zip Code Analyzer</p>
+  </footer>
+
   <%= javascript_include_tag 'application' %>
 
-  </body>
+</body>
 </html>
