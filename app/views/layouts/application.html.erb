@@ -15,7 +15,7 @@
     <nav class="teal darken-4">
       <div class="container">
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo">Zip Code Analyzer</a>
+          <%= link_to image_tag("AnalyZip.svg", alt: "AnalyZip", width: 145, class: "az-logo"), root_path, class: "brand-logo" %>
           <a href="#" data-target="mobile-nav" class="sidenav-trigger">
             <i class="material-icons">menu</i>
           </a>
@@ -37,7 +37,7 @@
   </div>
 
   <footer class="teal darken-4 white-text center">
-    <p>Zip Code Analyzer</p>
+    <p>AnalyZip</p>
   </footer>
 
   <%= javascript_include_tag 'application' %>
