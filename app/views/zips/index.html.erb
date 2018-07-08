@@ -5,7 +5,7 @@
     <div class="card-panel">
       <h5>Highest Income Zips:</h5>
       <ol>
-        <% @high_incomes.each do |zip| %>
+        <% @zips.high_incomes.each do |zip| %>
         <li><%= link_to zip.id, zip_path(zip) %>, <%= zip.mean_income %></li>
         <% end %>
       </ol>
@@ -15,7 +15,7 @@
     <div class="card-panel">
       <h5>Lowest Income Zips:</h5>
       <ol>
-        <% @low_incomes.each do |zip| %>
+        <% @zips.low_incomes.each do |zip| %>
         <li><%= link_to zip.id, zip_path(zip) %>, <%= zip.mean_income %></li>
         <% end %>
       </ol>
@@ -25,7 +25,7 @@
     <div class="card-panel">
       <h5>Highest Pop Zips:</h5>
       <ol>
-        <% @highest_pops.each do |zip| %>
+        <% @zips.highest_pops.each do |zip| %>
         <li><%= link_to zip.id, zip_path(zip) %>, <%= zip.n1 %></li>
         <% end %>
       </ol>
