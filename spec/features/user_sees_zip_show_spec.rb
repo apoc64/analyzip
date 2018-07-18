@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'user visits zip show page' do
-  xit 'shows zip info' do
+  it 'shows zip info' do
     # use web mock
     zip = create(:zip)
 
