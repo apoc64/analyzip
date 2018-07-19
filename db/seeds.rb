@@ -1,10 +1,63 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+STATE_ABBR_TO_NAME = {
+    'AL' => 'Alabama',
+    'AK' => 'Alaska',
+    'AS' => 'America Samoa',
+    'AZ' => 'Arizona',
+    'AR' => 'Arkansas',
+    'CA' => 'California',
+    'CO' => 'Colorado',
+    'CT' => 'Connecticut',
+    'DE' => 'Delaware',
+    'DC' => 'District of Columbia',
+    'FM' => 'Federated States Of Micronesia',
+    'FL' => 'Florida',
+    'GA' => 'Georgia',
+    'GU' => 'Guam',
+    'HI' => 'Hawaii',
+    'ID' => 'Idaho',
+    'IL' => 'Illinois',
+    'IN' => 'Indiana',
+    'IA' => 'Iowa',
+    'KS' => 'Kansas',
+    'KY' => 'Kentucky',
+    'LA' => 'Louisiana',
+    'ME' => 'Maine',
+    'MH' => 'Marshall Islands',
+    'MD' => 'Maryland',
+    'MA' => 'Massachusetts',
+    'MI' => 'Michigan',
+    'MN' => 'Minnesota',
+    'MS' => 'Mississippi',
+    'MO' => 'Missouri',
+    'MT' => 'Montana',
+    'NE' => 'Nebraska',
+    'NV' => 'Nevada',
+    'NH' => 'New Hampshire',
+    'NJ' => 'New Jersey',
+    'NM' => 'New Mexico',
+    'NY' => 'New York',
+    'NC' => 'North Carolina',
+    'ND' => 'North Dakota',
+    'OH' => 'Ohio',
+    'OK' => 'Oklahoma',
+    'OR' => 'Oregon',
+    'PW' => 'Palau',
+    'PA' => 'Pennsylvania',
+    'PR' => 'Puerto Rico',
+    'RI' => 'Rhode Island',
+    'SC' => 'South Carolina',
+    'SD' => 'South Dakota',
+    'TN' => 'Tennessee',
+    'TX' => 'Texas',
+    'UT' => 'Utah',
+    'VT' => 'Vermont',
+    'VI' => 'Virgin Island',
+    'VA' => 'Virginia',
+    'WA' => 'Washington',
+    'WV' => 'West Virginia',
+    'WI' => 'Wisconsin',
+    'WY' => 'Wyoming'
+  }
 
 require 'csv'
 zips_csv = CSV.open('./data/15zpallnoagi.csv', headers: true, header_converters: :symbol)
@@ -13,6 +66,7 @@ zips_csv.each do |zip|
   if zip[:zipcode] == "00000" # Migrate to add state totals?
     state = State.create(
       id: zip[:statefips],
+      name: STATE_ABBR_TO_NAME[zip[:state]],
       abbreviation: zip[:state],
       agi_stub: zip[:agi_stub],
       n1: zip[:n1],
