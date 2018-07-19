@@ -1,6 +1,6 @@
 class Google
   def zip_coords(zip_code)
-    if Rails.application.credentials.google[:api_key]
+    if Rails.application.credentials.google
       url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{zip_code}&key=#{Rails.application.credentials.google[:api_key]}"
       response = HTTParty.get(url)
     else
