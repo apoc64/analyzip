@@ -1,4 +1,4 @@
-# 
+#
 # default: &default
 #   adapter: postgresql
 #   encoding: unicode
@@ -39,6 +39,15 @@ test:
 
 production:
   <<: *default
-  database: zip_data_production
-  username: zip_data
-  password: <%= ENV['ZIP_DATA_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+
+
+  # database: zip_data_production
+  # username: zip_data
+  # password: <%= ENV['ZIP_DATA_DATABASE_PASSWORD'] %>

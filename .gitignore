@@ -12,7 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-*.csv
+.csv
 
 # Ignore uploaded files in development
 /storage/*
