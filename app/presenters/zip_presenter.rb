@@ -12,12 +12,15 @@ class ZipPresenter
   attr_reader :code,
               :zip,
               :lat,
-              :lng
+              :lng,
+              :bounds
 
   def initialize(zip_code)
     @code = zip_code
     @zip = Zip.find(zip_code)
-    coords = Google.new.zip_coords(zip_code)
+    google = Google.new(zip_code)
+    coords = google.center
+    @bounds = google.bounds
     @lat = coords["lat"]
     @lng = coords["lng"]
   end
