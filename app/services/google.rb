@@ -15,7 +15,7 @@ class Google
   end
 
   def bounds
-    response["results"][0]["geometry"]["bounds"].to_json
+    response["results"][0]["geometry"]["bounds"]
   end
 
   def county

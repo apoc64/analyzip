@@ -46,13 +46,22 @@
 
 <% if @state.lat != 0 %>
 <script>
+
 function initMap() {
   var options = {
     zoom: 7,
     center: {lat: <%= @state.lat %>, lng: <%= @state.lng %>}
   }
   var map = new google.maps.Map(document.querySelector('#map'), options);
+  var bounds = {
+    north: <%= @state.ne_lat %>,
+    south: <%= @state.sw_lat %>,
+    east: <%= @state.ne_lng %>,
+    west: <%= @state.sw_lng %>
+  }
+  map.fitBounds(bounds)
 }
+
 </script>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
 <% end %>

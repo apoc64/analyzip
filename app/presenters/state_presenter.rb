@@ -12,15 +12,22 @@ class StatePresenter
 
   attr_reader :lat,
               :lng,
-              :bounds
+              :ne_lat,
+              :ne_lng,
+              :sw_lat,
+              :sw_lng
 
   def initialize(state_id)
     @state = State.find(state_id)
     google = Google.new(name)
     coords = google.center
-    @bounds = google.bounds
     @lat = coords["lat"]
     @lng = coords["lng"]
+    bounds = google.bounds
+    @ne_lat = bounds["northeast"]["lat"]
+    @ne_lng = bounds["northeast"]["lng"]
+    @sw_lat = bounds["southwest"]["lat"]
+    @sw_lng = bounds["southwest"]["lng"]
   end
 
   def name
