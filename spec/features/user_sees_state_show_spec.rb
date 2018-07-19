@@ -23,7 +23,7 @@ describe 'user visits state show page' do
     expect(page).to have_content("Percent Elderly: #{((state.elderly.to_f / state.n1.to_f) * 100).to_i}")
     expect(page).to have_content("Avg Income: $200,000")
 
-    # expect(page).to have_css('.map')
+    expect(page).to have_css('#map')
   end
 
   it 'has high and low income zips' do

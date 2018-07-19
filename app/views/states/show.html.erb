@@ -37,8 +37,22 @@
 </div>
 
 <!-- Map -->
+<div id="map"></div>
 
 <h5 class="center">Zip Codes in <%= @state.name %></h5>
 <% @state.zips.each do |zip| %>
   <%= link_to zip.id, zip_path(zip) %>
+<% end %>
+
+<% if @state.lat != 0 %>
+<script>
+function initMap() {
+  var options = {
+    zoom: 7,
+    center: {lat: <%= @state.lat %>, lng: <%= @state.lng %>}
+  }
+  var map = new google.maps.Map(document.querySelector('#map'), options);
+}
+</script>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
 <% end %>

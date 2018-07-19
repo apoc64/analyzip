@@ -10,9 +10,17 @@ class StatePresenter
   def_delegator :@state, :mean_income
   def_delegator :@state, :zips
 
+  attr_reader :lat,
+              :lng,
+              :bounds
+
   def initialize(state_id)
     @state = State.find(state_id)
-    # map call
+    google = Google.new(name)
+    coords = google.center
+    @bounds = google.bounds
+    @lat = coords["lat"]
+    @lng = coords["lng"]
   end
 
   def name
