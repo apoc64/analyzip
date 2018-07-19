@@ -1,7 +1,24 @@
 <h3 class="center"><%= @state.name %></h3>
 
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable">
+      <h5 class="center teal-text text-darken-4">Basic IRS Data</h5>
+      <h6>No. of Returns: <span class="right"><%= number_with_delimiter(@state.n1) %></h6>
+      <h6>Percent Single: <span class="right"><%= @state.percent_single %>%</span></h6>
+      <h6>Percent Joint File: <span class="right"><%= @state.percent_joint %>%</span></h6>
+      <h6>Percent HOH: <span class="right"><%= @state.percent_hoh %>%</span></h6>
+      <h6>Percent Paid Prep: <span class="right"><%= @state.percent_paid_prep %>%</span></h6>
+      <h6>Avg No. Dependents: <span class="right"><%= @state.average_dependents %></span></h6>
+      <h6>Percent Elderly: <span class="right"><%= @state.percent_elderly %>%</span></h6>
+      <h6>Avg Income: <span class="right"><%= number_to_currency(@state.mean_income, precision: 0) %></span></h6>
+    </div>
+  </div>
+</div>
 
+<!-- Map -->
 
+<h5 class="center">Zip Codes in <%= @state.name %></h5>
 <% @state.zips.each do |zip| %>
   <%= link_to zip.id, zip_path(zip) %>
 <% end %>

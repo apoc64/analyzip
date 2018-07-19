@@ -4,8 +4,6 @@ class StatesController < ApplicationController
   end
 
   def show
-    @state = State.find(params[:id])
-    @zips = Zip.where(state: @state)
-    # binding.pry
+    @state = StatePresenter.new(params[:id])
   end
 end
