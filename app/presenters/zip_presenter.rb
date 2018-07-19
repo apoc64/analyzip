@@ -7,6 +7,7 @@ class ZipPresenter
   def_delegator :@zip, :percent_paid_prep
   def_delegator :@zip, :percent_elderly
   def_delegator :@zip, :mean_income
+  def_delegator :@zip, :state
 
   attr_reader :code,
               :zip,

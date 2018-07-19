@@ -8,7 +8,7 @@ describe 'user visits zip show page' do
     visit zip_path(zip)
 
     expect(page).to have_content(zip.id)
-    expect(page).to have_content("Located in: #{zip.state.abbreviation}")
+    expect(page).to have_link(zip.state.abbreviation)
     expect(page).to have_content("No. of Returns: 5,000")
     expect(page).to have_content("Percent Single: #{((zip.mars1.to_f / zip.n1.to_f) * 100).to_i}")
     expect(page).to have_content("Percent Joint File: #{((zip.mars2.to_f / zip.n1.to_f) * 100).to_i}")
