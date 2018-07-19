@@ -1,4 +1,6 @@
 <h3 class="center">States</h3>
+
+
 <% @states.each do |state| %>
   <%= link_to state.abbreviation, state_path(state) %>
 <% end %>
