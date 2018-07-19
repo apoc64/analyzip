@@ -19,6 +19,7 @@
 
 <div id="map"></div>
 
+<% if @zip.lat != 0 %>
 <script>
 function initMap() {
   var options = {
@@ -29,3 +30,4 @@ function initMap() {
 }
 </script>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
+<% end %>
