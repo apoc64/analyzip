@@ -1,6 +1,14 @@
 FactoryBot.define do
   factory :state do
     abbreviation 'CO'
+    n1 15000
+    mars1 22000
+    mars2 12500
+    mars4 11000
+    prep 1750
+    numdep 23000
+    elderly 1750
+    a00100 3000000
   end
 
   factory :zip do
