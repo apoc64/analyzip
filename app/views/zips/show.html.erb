@@ -1,13 +1,21 @@
 <h3 class="center"><%= @zip.code %></h3>
-<h6>Located in: <%= @zip.zip.state.abbreviation %></h6>
-<h6>Number of Returns: <%= @zip.zip.n1 %></h6>
-<h6>Percent Single: <%= @zip.zip.percent_single %></h6>
-<h6>Percent Joint File: <%= @zip.zip.percent_joint %></h6>
-<h6>Percent HOH: <%= @zip.zip.percent_hoh %></h6>
-<h6>Percent Paid Prep: <%= @zip.zip.percent_paid_prep %></h6>
-<h6>Average Number of Dependents: <%= @zip.zip.average_dependents %></h6>
-<h6>Percent Elderly: <%= @zip.zip.percent_elderly %></h6>
-<h6>Mean Adjusted Gross Income*: <%= @zip.zip.mean_income %></h6>
+<h5 class="center">Located in: <%= @zip.state_name %></h5>
+
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable">
+      <h5 class="center teal-text text-darken-4">Basic IRS Data</h5>
+      <h6>No. of Returns: <span class="right"><%= number_with_delimiter(@zip.n1) %></h6>
+      <h6>Percent Single: <span class="right"><%= @zip.percent_single %>%</span></h6>
+      <h6>Percent Joint File: <span class="right"><%= @zip.percent_joint %>%</span></h6>
+      <h6>Percent HOH: <span class="right"><%= @zip.percent_hoh %>%</span></h6>
+      <h6>Percent Paid Prep: <span class="right"><%= @zip.percent_paid_prep %>%</span></h6>
+      <h6>Avg No. Dependents: <span class="right"><%= @zip.average_dependents %></span></h6>
+      <h6>Percent Elderly: <span class="right"><%= @zip.percent_elderly %>%</span></h6>
+      <h6>Avg Income: <span class="right"><%= number_to_currency(@zip.mean_income, precision: 0) %></span></h6>
+    </div>
+  </div>
+</div>
 
 <div id="map"></div>
 
