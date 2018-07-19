@@ -25,4 +25,18 @@ describe 'user visits state show page' do
 
     # expect(page).to have_css('.map')
   end
+
+  it 'has high and low income zips' do
+    state = create(:state)
+    zip1 = state.zips.create(id: 80205, n1: 4000, a00100: 5000000)
+    zip2 = state.zips.create(id: 80203, n1: 4000, a00100: 6000000)
+    zip3 = create(:zip)
+
+    visit state_path(state)
+
+    expect(page).to have_content("Highest Incomes:\n#{zip2.id}: $1,500,000")
+    expect(page).to have_link(zip1.id)
+    expect(page).to have_content("Lowest Incomes:\n#{zip1.id}: $1,250,000")
+    expect(page).to have_link(zip2.id)
+  end
 end

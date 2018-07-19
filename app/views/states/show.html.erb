@@ -14,6 +14,26 @@
       <h6>Avg Income: <span class="right"><%= number_to_currency(@state.mean_income, precision: 0) %></span></h6>
     </div>
   </div>
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable">
+      <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
+      <ol>
+        <% @state.high_incomes.each do |zip| %>
+        <li><%= link_to zip.id, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable">
+      <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
+      <ol>
+        <% @state.low_incomes.each do |zip| %>
+        <li><%= link_to zip.id, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
 </div>
 
 <!-- Map -->

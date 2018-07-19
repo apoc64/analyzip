@@ -22,4 +22,12 @@ class StatePresenter
   def average_dependents
     @state.average_dependents.round(2)
   end
+
+  def high_incomes
+    @state.zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income DESC').limit(10)
+  end
+
+  def low_incomes
+    @state.zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)
+  end
 end
