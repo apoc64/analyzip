@@ -19,7 +19,7 @@
       <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
       <ol>
         <% @state.high_incomes.each do |zip| %>
-        <li><%= link_to zip.id, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
+        <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
     </div>
@@ -29,7 +29,7 @@
       <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
       <ol>
         <% @state.low_incomes.each do |zip| %>
-        <li><%= link_to zip.id, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
+        <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
     </div>
@@ -37,8 +37,31 @@
 </div>
 
 <!-- Map -->
+<div id="map"></div>
 
 <h5 class="center">Zip Codes in <%= @state.name %></h5>
 <% @state.zips.each do |zip| %>
-  <%= link_to zip.id, zip_path(zip) %>
+  <%= link_to zip.code, zip_path(zip) %>
+<% end %>
+
+<% if @state.lat != 0 %>
+<script>
+
+function initMap() {
+  var options = {
+    zoom: 7,
+    center: {lat: <%= @state.lat %>, lng: <%= @state.lng %>}
+  }
+  var map = new google.maps.Map(document.querySelector('#map'), options);
+  var bounds = {
+    north: <%= @state.ne_lat %>,
+    south: <%= @state.sw_lat %>,
+    east: <%= @state.ne_lng %>,
+    west: <%= @state.sw_lng %>
+  }
+  map.fitBounds(bounds, -10)
+}
+
+</script>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
 <% end %>

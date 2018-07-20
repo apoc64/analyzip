@@ -27,6 +27,13 @@ function initMap() {
     center: {lat: <%= @zip.lat %>, lng: <%= @zip.lng %>}
   }
   var map = new google.maps.Map(document.querySelector('#map'), options);
+  var bounds = {
+    north: <%= @zip.ne_lat %>,
+    south: <%= @zip.sw_lat %>,
+    east: <%= @zip.ne_lng %>,
+    west: <%= @zip.sw_lng %>
+  }
+  map.fitBounds(bounds, -10)
 }
 </script>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
