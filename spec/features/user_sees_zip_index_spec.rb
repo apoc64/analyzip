@@ -8,11 +8,11 @@ describe 'user visits zip index page' do
 
     visit zips_path
 
-    expect(page).to have_content("Highest Incomes:\n#{zip2.id}: $1,000,000")
+    expect(page).to have_content("Highest Incomes:\n#{zip2.code}: $1,000,000")
     expect(page).to have_link(zip1.id)
-    expect(page).to have_content("Lowest Incomes:\n#{zip1.id}: $200,000")
+    expect(page).to have_content("Lowest Incomes:\n#{zip1.code}: $200,000")
     expect(page).to have_link(zip2.id)
-    expect(page).to have_content("Highest Pops:\n#{zip3.id}: 5,100")
+    expect(page).to have_content("Highest Pops:\n#{zip3.code}: 5,100")
     expect(page).to have_link(zip2.id)
   end
 end

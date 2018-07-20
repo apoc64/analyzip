@@ -1,8 +1,5 @@
 class Google
   def initialize(location)
-    # if location.kind_of? Integer
-    #   location = "%05d" % location
-    # end
     @location = location
   end
 
