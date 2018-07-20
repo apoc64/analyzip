@@ -44,7 +44,7 @@
   <%= link_to zip.code, zip_path(zip) %>
 <% end %>
 
-<% if @state.lat != 0 %>
+<% if @state.lat %>
 <script>
 
 function initMap() {
