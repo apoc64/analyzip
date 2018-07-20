@@ -29,4 +29,12 @@ class State < ApplicationRecord
   def mean_income
     ((a00100.to_f / n1.to_f) * 1000).to_i
   end
+
+  def high_incomes
+    zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income DESC').limit(10)
+  end
+
+  def low_incomes
+    zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)
+  end
 end
