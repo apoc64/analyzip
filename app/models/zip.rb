@@ -3,6 +3,10 @@ class Zip < ApplicationRecord
 
   belongs_to :state
 
+  def code
+    "%05d" % id
+  end
+
   def percent_single
     ((mars1.to_f / n1.to_f) * 100).to_i
   end

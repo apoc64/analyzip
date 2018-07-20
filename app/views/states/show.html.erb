@@ -19,7 +19,7 @@
       <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
       <ol>
         <% @state.high_incomes.each do |zip| %>
-        <li><%= link_to zip.id, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
+        <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
     </div>
@@ -29,7 +29,7 @@
       <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
       <ol>
         <% @state.low_incomes.each do |zip| %>
-        <li><%= link_to zip.id, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
+        <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
     </div>
@@ -41,7 +41,7 @@
 
 <h5 class="center">Zip Codes in <%= @state.name %></h5>
 <% @state.zips.each do |zip| %>
-  <%= link_to zip.id, zip_path(zip) %>
+  <%= link_to zip.code, zip_path(zip) %>
 <% end %>
 
 <% if @state.lat != 0 %>
@@ -59,7 +59,7 @@ function initMap() {
     east: <%= @state.ne_lng %>,
     west: <%= @state.sw_lng %>
   }
-  map.fitBounds(bounds)
+  map.fitBounds(bounds, -10)
 }
 
 </script>
