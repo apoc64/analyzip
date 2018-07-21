@@ -1,5 +1,5 @@
 .az-logo {
-  padding-top: 11px;
+  padding-top: 10px;
 }
 
 h3 {
@@ -25,4 +25,10 @@ footer {
 footer p {
   margin: 0;
   padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .az-logo {
+    padding-top: 6px;
+  }
 }
