@@ -46,22 +46,44 @@
 
 <% if @state.lat %>
 <script>
+  function initMap() {
+    var options = {
+      zoom: 7,
+      center: {lat: <%= @state.lat %>, lng: <%= @state.lng %>}
+    }
+    var map = new google.maps.Map(document.querySelector('#map'), options);
+    var bounds = {
+      north: <%= @state.ne_lat %>,
+      south: <%= @state.sw_lat %>,
+      east: <%= @state.ne_lng %>,
+      west: <%= @state.sw_lng %>
+    }
+    map.fitBounds(bounds, -10)
 
-function initMap() {
-  var options = {
-    zoom: 7,
-    center: {lat: <%= @state.lat %>, lng: <%= @state.lng %>}
-  }
-  var map = new google.maps.Map(document.querySelector('#map'), options);
-  var bounds = {
-    north: <%= @state.ne_lat %>,
-    south: <%= @state.sw_lat %>,
-    east: <%= @state.ne_lng %>,
-    west: <%= @state.sw_lng %>
-  }
-  map.fitBounds(bounds, -10)
-}
+    addMarker({
+      coords:{lat:42.4668,lng:-70.9495},
+      content:"<h5>Yo!</h5>"
+    }); // in MA ... can do just coords
 
+    function addMarker(props){
+      var marker = new google.maps.Marker({
+        position:props.coords,
+        map:map
+        // icon: ... can include in props
+      });
+
+      if(props.content){
+        var infoWindow = new google.maps.InfoWindow({
+          content: props.content
+        });
+
+        marker.addListener('click', function(){
+          infoWindow.open(map, marker)
+        });
+      }
+    } // end of add marker
+  } // end of init map
 </script>
+
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
 <% end %>

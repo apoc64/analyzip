@@ -2,10 +2,7 @@
   padding-top: 10px;
 }
 
-h3 {
-  font-family: "Arial Rounded MT Bold", sans-serif;
-}
-h5 {
+h3, h5 {
   font-family: "Arial Rounded MT Bold", sans-serif;
 }
 
