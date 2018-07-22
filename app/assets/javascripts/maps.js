@@ -4,6 +4,7 @@ console.log(lowIncomes)
 var map
 var geocoder
 var markers = []
+var addressMarkers = []
 
 function initMap() {
   var options = {
@@ -53,7 +54,7 @@ function addMarker(latLng, components, shouldOpen) {
   }; // else?
   // addEnventListener??
   markers.push([marker, infoWindow])
-  console.log(markers)
+  return marker
 }
 
 function setAddressMessage(components) {
@@ -74,21 +75,41 @@ function setAddressMessage(components) {
   return `<h6><a href="/zips/${zip}">${zip}</a></h6><p>${county}</p><p>${state}</p>`;
 } // end of setAddressMessage
 
+// if map has high income card, set event listener:
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
   var highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
-    clearAllMarkers()
-    highIncomes.forEach(function(zip) {
-      geocoder.geocode({address:zip}, function(results, status) {
-        if (status === 'OK') {
-          if (results[0]) {
-            addMarker(results[0]["geometry"]["location"], results[0].address_components, false)
-          }
-        }
-      }) // end geocoder
-    }) // end forEach high income
+    setMarkers(highIncomes)
   }) // end high incomes event listener
 } // end if high incomes
+
+// if map has low income card, set event listener:
+if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
+  var lowIncomeCard = document.querySelector('.low-incomes');
+  lowIncomeCard.addEventListener('click', function() {
+    setMarkers(lowIncomes)
+  }) // end high incomes event listener
+} // end if high incomes
+
+function setMarkers(addresses) {
+  clearAllMarkers()
+  addresses.forEach(function(address) {
+    // not always doing all 10 ???
+    if(addressMarkers[address]) {
+      addressMarkers[address].setMap(map)
+    } else {
+      geocoder.geocode({address:address}, function(results, status) {
+        if (status === 'OK' && results[0]) {
+          var marker = addMarker(results[0]["geometry"]["location"], results[0].address_components, false)
+          addressMarkers[address] = marker
+        } else {
+          // Why? Performance? Try again?
+          console.log(`Failed to add marker: ${address}`)
+        }
+      }) // end geocoder
+    } // end if else marker already exists
+  }) // end forEach high income
+} // end setMarkers
 
 function clearAllMarkers() {
   markers.forEach(function(marker) {
