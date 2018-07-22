@@ -43,71 +43,24 @@
   <%= link_to zip.code, zip_path(zip) %>
 <% end %>
 
+<!-- if there is a valid map -->
 <% if @state.lat %>
-<script>
-  function initMap() {
-    var options = {
-      zoom: 7,
-      center: {lat: <%= @state.lat %>, lng: <%= @state.lng %>}
-    }
-    var map = new google.maps.Map(document.querySelector('#map'), options);
-    var bounds = {
-      north: <%= @state.ne_lat %>,
-      south: <%= @state.sw_lat %>,
-      east: <%= @state.ne_lng %>,
-      west: <%= @state.sw_lng %>
-    }
-    map.fitBounds(bounds, -10)
+  <script>
+    const lat = <%= @state.lat %>
+    const lng = <%= @state.lng %>
+    const ne_lat = <%= @state.ne_lat %>
+    const ne_lng = <%= @state.ne_lng %>
+    const sw_lat = <%= @state.sw_lat %>
+    const sw_lng = <%= @state.sw_lng %>
+  </script>
 
-    var geocoder = new google.maps.Geocoder;
-    var infoWindow = new google.maps.InfoWindow;
+  <%= javascript_include_tag 'maps' %>
 
-    google.maps.event.addListener(map, 'click',
-    function(event){
-      var latLng = event.latLng
-      console.log(JSON.stringify(latLng));
-      geocoder.geocode({'location':latLng}, function(results, status) {
-        if (status === 'OK') {
-          if (results[0]) {
-            var marker = new google.maps.Marker({
-              position: latLng,
-              map: map
-            });
-            console.log(JSON.stringify(results[0].address_components))
-            var message = setAddressMessage(results[0].address_components)
-            console.log(message)
-            infoWindow.setContent(message);
-            infoWindow.open(map, marker);
-          } else {
-            window.alert('No results found');
-          }
-        } else {
-          window.alert('Geocoder failed due to: ' + status);
-        }
-      });
-    });
-  } // end of init map
-
-  function setAddressMessage(components) {
-    console.log(components.length);
-    var zip = "";
-    var county = "";
-    var state = "";
-    components.forEach(function(component) {
-      if(component["types"].includes("postal_code")) {
-        zip = component["short_name"];
-      };
-      if(component["types"].includes("administrative_area_level_2")) {
-        county = component["short_name"];
-      };
-      if(component["types"].includes("administrative_area_level_1")) {
-        state = component["long_name"];
-      };
-    });
-    return `<h6><a href="/zips/${zip}">${zip}</a></h6><p>${county}</p><p>${state}</p>`;
-  } // end of setAddressMessage
-
-</script>
-
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
+<% else %>
+  <!-- if no valid map -->
+  <script>
+    const map = document.querySelector("#map")
+    map.style.display = 'hidden'
+  </script>
 <% end %>
