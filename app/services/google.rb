@@ -6,7 +6,6 @@ class Google
     @location = location
   end
 
-
   def center
     return nil if invalid
     response["results"][0]["geometry"]["location"]
@@ -35,11 +34,11 @@ class Google
   def get_results
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{location}&key=#{Rails.application.credentials.google[:api_key]}"
     HTTParty.get(url)
-    # Faraday, symbolize names
+    # Faraday, symbolize names???
   end
 
   def invalid
-    # 81041
+    # 81041 ??? now its there???
     response["status"] == "ZERO_RESULTS"
   end
 end

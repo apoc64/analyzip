@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable">
+    <div class="card-panel grey lighten-5 hoverable base-card">
       <h5 class="center teal-text text-darken-4">Basic IRS Data</h5>
       <h6>No. of Returns: <span class="right"><%= number_with_delimiter(@zip.n1) %></h6>
       <h6>Percent Single: <span class="right"><%= @zip.percent_single %>%</span></h6>
@@ -17,24 +17,30 @@
   </div>
 </div>
 
+<div id="map-info"></div>
 <div id="map"></div>
 
 <% if @zip.lat %>
+<!-- if there is a valid map -->
 <script>
-function initMap() {
-  var options = {
-    zoom: 13,
-    center: {lat: <%= @zip.lat %>, lng: <%= @zip.lng %>}
-  }
-  var map = new google.maps.Map(document.querySelector('#map'), options);
-  var bounds = {
-    north: <%= @zip.ne_lat %>,
-    south: <%= @zip.sw_lat %>,
-    east: <%= @zip.ne_lng %>,
-    west: <%= @zip.sw_lng %>
-  }
-  map.fitBounds(bounds, -10)
-}
+  const lat = <%= @zip.lat %>;
+  const lng = <%= @zip.lng %>;
+  const ne_lat = <%= @zip.ne_lat %>;
+  const ne_lng = <%= @zip.ne_lng %>;
+  const sw_lat = <%= @zip.sw_lat %>;
+  const sw_lng = <%= @zip.sw_lng %>;
+  const title = <%= @zip.code %>
+
+  var highIncomes = [];
+  var lowIncomes = [];
 </script>
+
+<%= javascript_include_tag 'maps' %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
+<<% else %>
+  <!-- if no valid map -->
+  <script>
+    const map = document.querySelector("#map")
+    map.style.display = 'hidden'
+  </script>
 <% end %>
