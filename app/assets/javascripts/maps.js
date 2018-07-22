@@ -1,5 +1,3 @@
-console.log("maps.js loaded")
-
 function initMap() {
   var options = {
     zoom: 7,
