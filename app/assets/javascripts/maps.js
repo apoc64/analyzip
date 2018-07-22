@@ -3,9 +3,17 @@ console.log(lowIncomes)
 
 var map
 var geocoder
+const mapInfo = document.querySelector('#map-info')
 // can these be cashed on client's browser?
 var markers = []
 var addressMarkers = []
+
+const bounds = {
+  north: ne_lat,
+  south: sw_lat,
+  east: ne_lng,
+  west: sw_lng
+}
 
 function initMap() {
   var options = {
@@ -13,12 +21,6 @@ function initMap() {
     center: {lat: lat, lng: lng}
   }
   map = new google.maps.Map(document.querySelector('#map'), options);
-  var bounds = {
-    north: ne_lat,
-    south: sw_lat,
-    east: ne_lng,
-    west: sw_lng
-  }
   map.fitBounds(bounds, -10)
   geocoder = new google.maps.Geocoder;
   addMapListener();
@@ -81,6 +83,8 @@ if(!(highIncomes === undefined || highIncomes.length == 0)) {
   const highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
     setMarkers(highIncomes)
+    mapInfo.innerHTML = `<h6 class="center">Highest income zip codes in ${title}:</h6>`
+    map.fitBounds(bounds, -10)
   }) // end high incomes event listener
 } // end if high incomes
 
@@ -89,12 +93,16 @@ if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
   const lowIncomeCard = document.querySelector('.low-incomes');
   lowIncomeCard.addEventListener('click', function() {
     setMarkers(lowIncomes)
+    mapInfo.innerHTML = `<h6 class="center">Lowest income zip codes in ${title}:</h6>`
+    map.fitBounds(bounds, -10)
   }) // end high incomes event listener
 } // end if high incomes
 
 const baseCard = document.querySelector('.base-card');
 baseCard.addEventListener('click', function() {
   clearAllMarkers()
+  mapInfo.innerHTML = ""
+  map.fitBounds(bounds, -10)
 })
 
 function setMarkers(addresses) {

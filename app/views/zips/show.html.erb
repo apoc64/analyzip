@@ -17,6 +17,7 @@
   </div>
 </div>
 
+<div id="map-info"></div>
 <div id="map"></div>
 
 <% if @zip.lat %>
@@ -28,6 +29,7 @@
   const ne_lng = <%= @zip.ne_lng %>;
   const sw_lat = <%= @zip.sw_lat %>;
   const sw_lng = <%= @zip.sw_lng %>;
+  const title = <%= @zip.code %>
 
   var highIncomes = [];
   var lowIncomes = [];
