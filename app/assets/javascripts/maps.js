@@ -20,23 +20,15 @@ function initMap() {
   map.fitBounds(bounds, -10)
 
   geocoder = new google.maps.Geocoder;
-  var infoWindow = new google.maps.InfoWindow;
 
   // map responds to click
   google.maps.event.addListener(map, 'click',
   function(event){
     var latLng = event.latLng
-    console.log(JSON.stringify(latLng));
     geocoder.geocode({'location':latLng}, function(results, status) {
       if (status === 'OK') {
         if (results[0]) {
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-          var message = setAddressMessage(results[0].address_components)
-          infoWindow.setContent(message);
-          infoWindow.open(map, marker);
+          var marker = addMarker(latLng, results[0].address_components, true)
         } else {
           window.alert('No results found'); // Remove once handled
         }
@@ -47,8 +39,24 @@ function initMap() {
   });
 } // end of init map
 
+function addMarker(latLng, components, shouldOpen) {
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  var message = setAddressMessage(components)
+  var infoWindow = new google.maps.InfoWindow;
+  infoWindow.setContent(message);
+  if(shouldOpen){
+    infoWindow.open(map, marker);
+  };
+  // return {
+  //   "marker": marker,
+  //   "infoWindow": infoWindow
+  // }
+}
+
 function setAddressMessage(components) {
-  console.log(components.length);
   var zip = "";
   var county = "";
   var state = "";
@@ -67,25 +75,18 @@ function setAddressMessage(components) {
 } // end of setAddressMessage
 
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
-  console.log("highIncomes")
   var highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
     highIncomes.forEach(function(zip) {
-      console.log(zip)
       geocoder.geocode({address:zip}, function(results, status) {
         if (status === 'OK') {
           if (results[0]) {
-            console.log(results[0]["geometry"])
-            var marker = new google.maps.Marker({
-              position: results[0]["geometry"]["location"],
-              map: map
-            });
-            // var message = setAddressMessage(results[0].address_components)
+            addMarker(results[0]["geometry"]["location"], results[0].address_components, false)
           }
         }
-      })
-    })
-  })
-}
+      }) // end geocoder
+    }) // end forEach high income
+  }) // end high incomes event listener
+} // end if high incomes
 
 // class Marker
