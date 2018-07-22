@@ -17,7 +17,7 @@ describe 'user visits zip show page' do
     expect(page).to have_content("Percent Joint File: #{((zip.mars2.to_f / zip.n1.to_f) * 100).to_i}")
     expect(page).to have_content("Percent HOH: #{((zip.mars4.to_f / zip.n1.to_f) * 100).to_i}")
     expect(page).to have_content("Percent Paid Prep: #{((zip.prep.to_f / zip.n1.to_f) * 100).to_i}")
-    expect(page).to have_content("Avg No. Dependents: #{(zip.numdep.to_f / zip.n1.to_f)}")
+    expect(page).to have_content("Avg Dependents: #{(zip.numdep.to_f / zip.n1.to_f)}")
     expect(page).to have_content("Percent Elderly: #{((zip.elderly.to_f / zip.n1.to_f) * 100).to_i}")
     expect(page).to have_content("Avg Income: $200,000")
   end
