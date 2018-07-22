@@ -6,7 +6,6 @@ class Google
     @location = location
   end
 
-
   def center
     return nil if invalid
     response["results"][0]["geometry"]["location"]

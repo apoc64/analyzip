@@ -1,9 +1,16 @@
+console.log(highIncomes)
+console.log(lowIncomes)
+
+var map
+var geocoder
+var markers = []
+
 function initMap() {
   var options = {
     zoom: 7,
     center: {lat: lat, lng: lng}
   }
-  var map = new google.maps.Map(document.querySelector('#map'), options);
+  map = new google.maps.Map(document.querySelector('#map'), options);
   var bounds = {
     north: ne_lat,
     south: sw_lat,
@@ -12,9 +19,10 @@ function initMap() {
   }
   map.fitBounds(bounds, -10)
 
-  var geocoder = new google.maps.Geocoder;
+  geocoder = new google.maps.Geocoder;
   var infoWindow = new google.maps.InfoWindow;
 
+  // map responds to click
   google.maps.event.addListener(map, 'click',
   function(event){
     var latLng = event.latLng
@@ -26,17 +34,15 @@ function initMap() {
             position: latLng,
             map: map
           });
-          console.log(JSON.stringify(results[0].address_components))
           var message = setAddressMessage(results[0].address_components)
-          console.log(message)
           infoWindow.setContent(message);
           infoWindow.open(map, marker);
         } else {
-          window.alert('No results found');
+          window.alert('No results found'); // Remove once handled
         }
       } else {
-        window.alert('Geocoder failed due to: ' + status);
-      }
+        window.alert('Geocoder failed due to: ' + status); // Remove once handled
+      } // end of checkoing status of geocode
     });
   });
 } // end of init map
@@ -59,3 +65,27 @@ function setAddressMessage(components) {
   });
   return `<h6><a href="/zips/${zip}">${zip}</a></h6><p>${county}</p><p>${state}</p>`;
 } // end of setAddressMessage
+
+if(!(highIncomes === undefined || highIncomes.length == 0)) {
+  console.log("highIncomes")
+  var highIncomeCard = document.querySelector('.high-incomes');
+  highIncomeCard.addEventListener('click', function() {
+    highIncomes.forEach(function(zip) {
+      console.log(zip)
+      geocoder.geocode({address:zip}, function(results, status) {
+        if (status === 'OK') {
+          if (results[0]) {
+            console.log(results[0]["geometry"])
+            var marker = new google.maps.Marker({
+              position: results[0]["geometry"]["location"],
+              map: map
+            });
+            // var message = setAddressMessage(results[0].address_components)
+          }
+        }
+      })
+    })
+  })
+}
+
+// class Marker

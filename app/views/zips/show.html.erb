@@ -22,12 +22,15 @@
 <% if @zip.lat %>
 <!-- if there is a valid map -->
 <script>
-  const lat = <%= @zip.lat %>
-  const lng = <%= @zip.lng %>
-  const ne_lat = <%= @zip.ne_lat %>
-  const ne_lng = <%= @zip.ne_lng %>
-  const sw_lat = <%= @zip.sw_lat %>
-  const sw_lng = <%= @zip.sw_lng %>
+  const lat = <%= @zip.lat %>;
+  const lng = <%= @zip.lng %>;
+  const ne_lat = <%= @zip.ne_lat %>;
+  const ne_lng = <%= @zip.ne_lng %>;
+  const sw_lat = <%= @zip.sw_lat %>;
+  const sw_lng = <%= @zip.sw_lng %>;
+
+  var highIncomes = [];
+  var lowIncomes = [];
 </script>
 
 <%= javascript_include_tag 'maps' %>

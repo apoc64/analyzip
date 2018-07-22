@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable">
+    <div class="card-panel grey lighten-5 hoverable high-incomes">
       <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
       <ol>
         <% @state.high_incomes.each do |zip| %>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable">
+    <div class="card-panel grey lighten-5 hoverable low-incomes">
       <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
       <ol>
         <% @state.low_incomes.each do |zip| %>
@@ -52,6 +52,16 @@
     const ne_lng = <%= @state.ne_lng %>
     const sw_lat = <%= @state.sw_lat %>
     const sw_lng = <%= @state.sw_lng %>
+
+    var highIncomes = []
+    var lowIncomes = []
+
+    <% @state.high_incomes.each do |zip| %>
+      highIncomes.push("<%= zip.code %>")
+    <% end %>
+    <% @state.low_incomes.each do |zip| %>
+      lowIncomes.push("<%= zip.code %>")
+    <% end %>
   </script>
 
   <%= javascript_include_tag 'maps' %>
