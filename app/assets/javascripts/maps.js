@@ -3,6 +3,7 @@ console.log(lowIncomes)
 
 var map
 var geocoder
+// can these be cashed on client's browser?
 var markers = []
 var addressMarkers = []
 
@@ -77,7 +78,7 @@ function setAddressMessage(components) {
 
 // if map has high income card, set event listener:
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
-  var highIncomeCard = document.querySelector('.high-incomes');
+  const highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
     setMarkers(highIncomes)
   }) // end high incomes event listener
@@ -85,11 +86,16 @@ if(!(highIncomes === undefined || highIncomes.length == 0)) {
 
 // if map has low income card, set event listener:
 if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
-  var lowIncomeCard = document.querySelector('.low-incomes');
+  const lowIncomeCard = document.querySelector('.low-incomes');
   lowIncomeCard.addEventListener('click', function() {
     setMarkers(lowIncomes)
   }) // end high incomes event listener
 } // end if high incomes
+
+const baseCard = document.querySelector('.base-card');
+baseCard.addEventListener('click', function() {
+  clearAllMarkers()
+})
 
 function setMarkers(addresses) {
   clearAllMarkers()
@@ -103,8 +109,8 @@ function setMarkers(addresses) {
           var marker = addMarker(results[0]["geometry"]["location"], results[0].address_components, false)
           addressMarkers[address] = marker
         } else {
-          // Why? Performance? Try again?
-          console.log(`Failed to add marker: ${address}`)
+          // Why? Performance? Over Query limit - 5,000 requests in 100 seconds???
+          console.log(`Failed to add marker: ${address}, status: ${status}, results: ${results}`)
         }
       }) // end geocoder
     } // end if else marker already exists
