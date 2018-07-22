@@ -18,10 +18,11 @@ function initMap() {
     west: sw_lng
   }
   map.fitBounds(bounds, -10)
-
   geocoder = new google.maps.Geocoder;
+  addMapListener();
+} // end of init map
 
-  // map responds to click
+function addMapListener() {
   google.maps.event.addListener(map, 'click',
   function(event){
     var latLng = event.latLng
@@ -34,10 +35,10 @@ function initMap() {
         }
       } else {
         window.alert('Geocoder failed due to: ' + status); // Remove once handled
-      } // end of checkoing status of geocode
+      } // end of checking status of geocode
     });
   });
-} // end of init map
+}
 
 function addMarker(latLng, components, shouldOpen) {
   var marker = new google.maps.Marker({
@@ -49,11 +50,10 @@ function addMarker(latLng, components, shouldOpen) {
   infoWindow.setContent(message);
   if(shouldOpen){
     infoWindow.open(map, marker);
-  };
-  // return {
-  //   "marker": marker,
-  //   "infoWindow": infoWindow
-  // }
+  }; // else?
+  // addEnventListener??
+  markers.push([marker, infoWindow])
+  console.log(markers)
 }
 
 function setAddressMessage(components) {
@@ -77,6 +77,7 @@ function setAddressMessage(components) {
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
   var highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
+    clearAllMarkers()
     highIncomes.forEach(function(zip) {
       geocoder.geocode({address:zip}, function(results, status) {
         if (status === 'OK') {
@@ -89,4 +90,9 @@ if(!(highIncomes === undefined || highIncomes.length == 0)) {
   }) // end high incomes event listener
 } // end if high incomes
 
+function clearAllMarkers() {
+  markers.forEach(function(marker) {
+    marker[0].setMap(null);
+  })
+}
 // class Marker
