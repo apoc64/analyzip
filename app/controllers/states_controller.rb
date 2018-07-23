@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
   def index
-    @states = State.all
+    @presenter = StateIndexPresenter.new
   end
 
   def show
