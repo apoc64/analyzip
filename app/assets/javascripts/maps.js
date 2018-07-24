@@ -15,6 +15,10 @@ const bounds = {
   west: sw_lng
 }
 
+if(!geoUnit) {
+  var geoUnit = "zip codes"
+}
+
 function initMap() {
   var options = {
     zoom: 7,
@@ -79,7 +83,7 @@ if(!(highIncomes === undefined || highIncomes.length == 0)) {
   const highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
     setMarkers(highIncomes)
-    mapInfo.innerHTML = `<h6 class="center">Highest income zip codes in ${title}:</h6>`
+    mapInfo.innerHTML = `<h6 class="center">Highest income ${geoUnit} in ${title}:</h6>`
     map.fitBounds(bounds, -10)
   }) // end high incomes event listener
 } // end if high incomes
@@ -89,7 +93,7 @@ if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
   const lowIncomeCard = document.querySelector('.low-incomes');
   lowIncomeCard.addEventListener('click', function() {
     setMarkers(lowIncomes)
-    mapInfo.innerHTML = `<h6 class="center">Lowest income zip codes in ${title}:</h6>`
+    mapInfo.innerHTML = `<h6 class="center">Lowest income ${geoUnit} in ${title}:</h6>`
     map.fitBounds(bounds, -10)
   }) // end high incomes event listener
 } // end if high incomes

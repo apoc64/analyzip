@@ -1,6 +1,8 @@
 class State < ApplicationRecord
   validates_presence_of :abbreviation
   has_many :zips
+  has_many :counties
+
 
   def percent_single
     ((mars1.to_f / n1.to_f) * 100).to_i

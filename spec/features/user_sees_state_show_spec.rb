@@ -5,7 +5,7 @@ describe 'user visits state show page' do
     state = create(:state)
     zip1 = state.zips.create(id: 80205, n1: 4000)
     zip2 = state.zips.create(id: 80203, n1: 4000)
-    zip3 = create(:zip)
+    zip3 = create(:zip, id: 90210)
 
     allow_any_instance_of(Google).to receive(:center).and_return({"lat" => 0, "lng" => 0})
     allow_any_instance_of(Google).to receive(:bounds).and_return({"northeast" => {"lat" => 0, "lng" => 0}, "southwest" => {"lat" => 0, "lng" => 0}})

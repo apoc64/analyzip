@@ -62,6 +62,8 @@ highIncomes.push("<%= state.name %>")
 <% @presenter.low_incomes.each do |state| %>
 lowIncomes.push("<%= state.name %>")
 <% end %>
+
+var geoUnit = "states"
 </script>
 
 <%= javascript_include_tag 'maps' %>

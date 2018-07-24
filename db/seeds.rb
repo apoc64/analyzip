@@ -337,5 +337,30 @@ zips_csv.each do |zip|
     )
   end
 end
+
+counties_csv = CSV.open('./data/chr_measures_CSV_2018.csv', headers: true, header_converters: :symbol)
+counties_csv.each do |county_row|
+  county = county_row.to_h
+  # add state and national data?
+  if county[:fips_county_code] != 0
+    county[:state_id] = county[:fips_state_code]
+    county[:id] = county[:"5digit_fips_code"]
+    county.delete(:fips_state_code)
+    county.delete(:fips_county_code)
+    county.delete(:state)
+    county.delete(:"5digit_fips_code")
+    new_county = County.new(county)
+    # new_county.id = county[:"5digit_fips_code"]
+    # new_county.state_id = county[:"FIPS State Code"]
+    if new_county.save
+      puts "Created: #{new_county.county}"
+    else
+      puts "Failed to create county #{county[:county]}, #{county[:state]}"
+    end
+  end
+end
+
+
 puts "Zips created: #{Zip.count}"
+puts "Counties created: #{County.count}"
 puts "States created: #{State.count}"
