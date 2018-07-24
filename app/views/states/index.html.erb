@@ -1,6 +1,69 @@
 <h3 class="center">States</h3>
 
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable high-incomes">
+      <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
+      <ol>
+        <% @presenter.high_incomes.each do |state| %>
+        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_to_currency(state.mean_income, precision: 0) %></span></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable low-incomes">
+      <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
+      <ol>
+        <% @presenter.low_incomes.each do |state| %>
+        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_to_currency(state.mean_income, precision: 0) %></span></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable">
+      <h5 class="center teal-text text-darken-4">Highest Pops:</h5>
+      <ol>
+        <% @presenter.highest_pops.each do |state| %>
+        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_with_delimiter(state.n1) %></span></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div
 
-<% @states.each do |state| %>
-  <%= link_to state.abbreviation, state_path(state) %>
+<div id="map-info"></div>
+<div id="map"></div>
+
+<h5 class="center">All States</h5>
+<div class='all-states'>
+<% @presenter.states.each do |state| %>
+   <%= link_to state.name, state_path(state), class: 'state-link' %>
 <% end %>
+</div>
+
+
+<script>
+const lat = <%= @presenter.lat %>
+const lng = <%= @presenter.lng %>
+const ne_lat = <%= @presenter.ne_lat %>
+const ne_lng = <%= @presenter.ne_lng %>
+const sw_lat = <%= @presenter.sw_lat %>
+const sw_lng = <%= @presenter.sw_lng %>
+const title = "<%= @presenter.name %>"
+
+var highIncomes = []
+var lowIncomes = []
+
+<% @presenter.high_incomes.each do |state| %>
+highIncomes.push("<%= state.name %>")
+<% end %>
+<% @presenter.low_incomes.each do |state| %>
+lowIncomes.push("<%= state.name %>")
+<% end %>
+</script>
+
+<%= javascript_include_tag 'maps' %>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>

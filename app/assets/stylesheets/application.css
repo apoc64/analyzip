@@ -13,6 +13,9 @@ h3, h5 {
 .card-panel p {
   margin: .6em 0 0 0;
 }
+.card-panel ol {
+  padding-left: 1em;
+}
 
 #map {
   margin: 30px 0;
@@ -21,6 +24,13 @@ h3, h5 {
 }
 #map-info {
   height: 1.5em;
+}
+
+.all-states {
+  text-align: center;
+}
+.state-link {
+  padding-right: 1em;
 }
 
 footer {
@@ -36,4 +46,6 @@ footer p {
     padding-top: 6px;
   }
 }
+
+/* 1225-600 */
 /* card media query at 800px */

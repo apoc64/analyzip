@@ -31,14 +31,10 @@ function addMapListener() {
   function(event){
     var latLng = event.latLng
     geocoder.geocode({'location':latLng}, function(results, status) {
-      if (status === 'OK') {
-        if (results[0]) {
-          var marker = addMarker(latLng, results[0].address_components, true)
-        } else {
-          window.alert('No results found'); // Remove once handled
-        }
+      if (status === 'OK' && results[0]) {
+        var marker = addMarker(latLng, results[0].address_components, true)
       } else {
-        window.alert('Geocoder failed due to: ' + status); // Remove once handled
+        console.log('Geocoder failed, status: ' + status + ', results: ' +results);
       } // end of checking status of geocode
     });
   });

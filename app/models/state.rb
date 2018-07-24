@@ -37,4 +37,16 @@ class State < ApplicationRecord
   def low_incomes
     zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)
   end
+
+  def zips_in_income_range(min, max)
+    # test, rewrite in AP, add view search feature
+    # zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income')
+    zip_codes = zips.to_a.find_all do |zip|
+      zip.mean_income > min && zip.mean_income < max
+    end
+    # zip_codes.map do |zip|
+    #   puts "#{zip.code}: #{zip.mean_income}"
+    # end
+  end
 end
+# State.find_by(abbreviation: 'CO').zips_in_income_range(35000, 40000)
