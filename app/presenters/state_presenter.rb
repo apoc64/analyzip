@@ -11,6 +11,7 @@ class StatePresenter
   def_delegator :@state, :zips
   def_delegator :@state, :high_incomes
   def_delegator :@state, :low_incomes
+  def_delegator :@state, :counties
 
   attr_reader :lat,
               :lng,

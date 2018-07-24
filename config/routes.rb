@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :states, only: [:index, :show]
-
+  resources :counties, only: [:show]
   resources :zips, only: [:index, :show]
 end

@@ -44,6 +44,11 @@
   <%= link_to zip.code, zip_path(zip) %>
 <% end %>
 
+<h5 class="center">Counties in <%= @state.name %></h5>
+<% @state.counties.each do |county| %>
+  <%= link_to county.name, county_path(county) %>
+<% end %>
+
 <!-- if there is a valid map -->
 <% if @state.lat %>
   <script>
