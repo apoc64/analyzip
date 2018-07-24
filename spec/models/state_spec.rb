@@ -7,5 +7,6 @@ RSpec.describe State, type: :model do
 
   describe 'relationships' do
     it {should have_many(:zips)}
+    it {should have_many(:counties)}
   end
 end

@@ -341,6 +341,7 @@ end
 counties_csv = CSV.open('./data/chr_measures_CSV_2018.csv', headers: true, header_converters: :symbol)
 counties_csv.each do |county_row|
   county = county_row.to_h
+  # add state and national data?
   if county[:fips_county_code] != 0
     county[:state_id] = county[:fips_state_code]
     county[:id] = county[:"5digit_fips_code"]
