@@ -30,9 +30,9 @@ describe 'user visits county show' do
     visit county_path(county)
 
     expect(page).to have_content('Denver County')
-    expect(page).to have_content('Located in Coloado')
-    expect(page).to have_link('Coloado')
+    expect(page).to have_content('Located in: Colorado')
+    expect(page).to have_link('Colorado')
     expect(page).to have_content("Low Birth Weight: 9.01%")
-    expect(page).to have_css(".map")
+    expect(page).to have_css("#map")
   end
 end
