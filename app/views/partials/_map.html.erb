@@ -1,0 +1,25 @@
+<% if @presenter.lat %>
+<!-- if there is a valid map -->
+
+<script>
+  const lat = <%= @presenter.lat %>;
+  const lng = <%= @presenter.lng %>;
+  const ne_lat = <%= @presenter.ne_lat %>;
+  const ne_lng = <%= @presenter.ne_lng %>;
+  const sw_lat = <%= @presenter.sw_lat %>;
+  const sw_lng = <%= @presenter.sw_lng %>;
+  const title = "<%= @presenter.map_name %>"
+
+  var highIncomes = [];
+  var lowIncomes = [];
+</script>
+
+<%= javascript_include_tag 'maps' %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&callback=initMap", async: true, defer: true %>
+<<% else %>
+  <!-- if no valid map -->
+  <script>
+    const map = document.querySelector("#map")
+    map.style.display = 'hidden'
+  </script>
+<% end %>

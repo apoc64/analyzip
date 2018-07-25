@@ -1,0 +1,36 @@
+<h3 class="center"><%= @presenter.name %></h3>
+<h5 class="center">Located in: <%= link_to @presenter.state.name, state_path(@presenter.state) %></h5>
+
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable base-card">
+      <h5 class="center teal-text text-darken-4">Basic Health Data</h5>
+      <p>Premature Death: <span class="right"><%= @presenter.premature_death %></p>
+      <p>Poor/Fair Health: <span class="right"><%= @presenter.poor_health %></span></p>
+      <p>Low Birth Weight: <span class="right"><%= @presenter.low_birth_weight %>%</span></p>
+      <p>STI Prevalence: <span class="right"><%= @presenter.sti_prevalence %></span></p>
+      <p>Teen Births: <span class="right"><%= @presenter.teen_births %></span></p>
+      <p>Diabetes Prevalence: <span class="right"><%= @presenter.diabetes_prevalence %></span></p>
+      <p>Infant Mortality: <span class="right"><%= @presenter.infant_mortality %></span></p>
+      <p>Uninsured: <span class="right"><%= @presenter.uninsured %></span></p>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable base-card">
+      <h5 class="center teal-text text-darken-4">Socio-Economic Data</h5>
+      <p>Children in Poverty: <span class="right"><%= @presenter.children_in_poverty %></p>
+      <p>Unemploymnet: <span class="right"><%= @presenter.unemployment %></span></p>
+      <p>Income Inequality: <span class="right"><%= @presenter.income_inequality %></span></p>
+      <p>Percent Rural: <span class="right"><%= @presenter.percent_rural %></span></p>
+      <p>Segregation B/W: <span class="right"><%= @presenter.segregation_bw %></span></p>
+      <p>Segregation NW/W: <span class="right"><%= @presenter.segregation_nw %></span></p>
+      <p>Air Pollution: <span class="right"><%= @presenter.air_pollution %></span></p>
+      <p>Water Violations: <span class="right"><%= @presenter.water_violations %></span></p>
+    </div>
+  </div>
+</div>
+
+<div id="map-info"></div>
+<div id="map"></div>
+
+<%= render partial: "partials/map" %>
