@@ -19,6 +19,9 @@ describe 'user visits home page' do
       click_on 'Zip Codes'
       expect(current_path).to eq(zips_path)
 
+      click_on 'Counties'
+      expect(current_path).to eq(counties_path)
+
       click_on 'AnalyZip'
       expect(current_path).to eq(root_path)
     end
@@ -26,6 +29,9 @@ describe 'user visits home page' do
     within('.sidenav') do
       click_on 'States'
       expect(current_path).to eq(states_path)
+
+      click_on 'Counties'
+      expect(current_path).to eq(counties_path)
 
       click_on 'Zip Codes'
       expect(current_path).to eq(zips_path)
