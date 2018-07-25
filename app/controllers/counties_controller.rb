@@ -1,7 +1,9 @@
 class CountiesController < ApplicationController
   def show
-    county_id = params[:id]
-    @presenter = CountyPresenter.new(county_id)
-    # binding.pry
+    @presenter = CountyPresenter.new(params[:id])
+  end
+
+  def index
+    @presenter = CountyIndexPresenter.new
   end
 end
