@@ -15,6 +15,22 @@
       <p>Uninsured: <span class="right"><%= @presenter.uninsured %></span></p>
     </div>
   </div>
+  <div class="col s12 m4">
+    <div class="card-panel grey lighten-5 hoverable base-card">
+      <h5 class="center teal-text text-darken-4">Basic Health Data</h5>
+      <p>Premature Death: <span class="right"><%= @presenter.premature_death %></p>
+      <p>Poor/Fair Health: <span class="right"><%= @presenter.poor_health %></span></p>
+      <p>Low Birth Weight: <span class="right"><%= @presenter.low_birth_weight %>%</span></p>
+      <p>STI Prevalence: <span class="right"><%= @presenter.sti_prevalence %></span></p>
+      <p>Teen Births: <span class="right"><%= @presenter.teen_births %></span></p>
+      <p>Diabetes Prevalence: <span class="right"><%= @presenter.diabetes_prevalence %></span></p>
+      <p>Infant Mortality: <span class="right"><%= @presenter.infant_mortality %></span></p>
+      <p>Uninsured: <span class="right"><%= @presenter.uninsured %></span></p>
+    </div>
+  </div>
 </div>
 
+<div id="map-info"></div>
 <div id="map"></div>
+
+<%= render partial: "partials/map" %>

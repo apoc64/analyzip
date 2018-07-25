@@ -1,5 +1,6 @@
-console.log(highIncomes)
-console.log(lowIncomes)
+// console.log(highIncomes)
+// console.log(lowIncomes)
+// console.log(lat)
 
 var map
 var geocoder
