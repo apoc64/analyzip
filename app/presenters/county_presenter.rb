@@ -9,6 +9,14 @@ class CountyPresenter
   def_delegator :@county, :measure_60_value, :diabetes_prevalence
   def_delegator :@county, :measure_129_value, :infant_mortality
   def_delegator :@county, :measure_85_value, :uninsured
+  def_delegator :@county, :measure_24_value, :children_in_poverty
+  def_delegator :@county, :measure_23_value, :unemployment
+  def_delegator :@county, :measure_44_value, :income_inequality
+  def_delegator :@county, :measure_125_value, :air_pollution
+  def_delegator :@county, :measure_126_value, :water_violations
+  def_delegator :@county, :measure_58_value, :percent_rural
+  def_delegator :@county, :measure_141_value, :segregation_bw
+  def_delegator :@county, :measure_142_value, :segregation_nw
   def_delegator :@county, :state
 
   attr_reader :county,
