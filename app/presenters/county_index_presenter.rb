@@ -44,12 +44,12 @@ class CountyIndexPresenter
     set_percent_collection(rcp, County.diabetes)
   end
 
-  def set_collection(rcp, collection)
-    counties = collection.map do |county|
-      CountyDecorator.new(county)
-    end
-    rcp.set_collection(counties)
-  end
+  # def set_collection(rcp, collection)
+  #   counties = collection.map do |county|
+  #     CountyDecorator.new(county)
+  #   end
+  #   rcp.set_collection(counties)
+  # end
 
   def set_percent_collection(rcp, collection)
     counties = collection.map do |county|
