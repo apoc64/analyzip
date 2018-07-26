@@ -1,9 +1,9 @@
 <h3 class="center">Counties</h3>
 
 <div class="row">
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.most_premature_death } %>
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.most_low_birth_weight } %>
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.most_diabetes } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.card_1 } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.card_2 } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.card_3 } %>
 </div>
 
 <div id="map-info"></div>
