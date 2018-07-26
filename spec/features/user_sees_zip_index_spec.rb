@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'user visits zip index page' do
   it 'shows high and low income zips' do
+    allow_any_instance_of(Google).to receive(:center).and_return({"lat" => 0, "lng" => 0})
+    allow_any_instance_of(Google).to receive(:bounds).and_return({"northeast" => {"lat" => 0, "lng" => 0}, "southwest" => {"lat" => 0, "lng" => 0}})
+    
     zip1 = create(:zip)
     zip2 = create(:zip_high_income)
     zip3 = create(:zip_high_pop)

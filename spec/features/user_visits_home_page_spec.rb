@@ -10,6 +10,9 @@ describe 'user visits home page' do
   end
 
   it 'can navigate to nav links' do
+    allow_any_instance_of(Google).to receive(:center).and_return({"lat" => 0, "lng" => 0})
+    allow_any_instance_of(Google).to receive(:bounds).and_return({"northeast" => {"lat" => 0, "lng" => 0}, "southwest" => {"lat" => 0, "lng" => 0}})
+    
     visit '/'
 
     within('.nav-wrapper') do
