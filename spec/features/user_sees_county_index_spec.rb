@@ -10,11 +10,11 @@ describe 'user visits county show' do
 
     visit counties_path
 
-    expect(page).to have_content("Most Premature Death:\n#{county1.name}, #{state.abbreviation}: 5000")
+    expect(page).to have_content("Most Premature Death:\n#{county1.name}, #{state.abbreviation}: 5,000")
     expect(page).to have_link(county1.name)
     expect(page).to have_content("Most Low Birth Weight:\n#{county2.name}, #{state.abbreviation}: 10.01%")
     expect(page).to have_link(county2.name)
-    expect(page).to have_content("Most Diabetes:\n#{county3.name}, #{state.abbreviation}: 0.154")
+    expect(page).to have_content("Most Diabetes:\n#{county3.name}, #{state.abbreviation}: 15.4%")
     expect(page).to have_link(county3.name)
 
   end

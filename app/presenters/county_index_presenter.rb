@@ -31,7 +31,7 @@ class CountyIndexPresenter
 
   def premature_deaths
     rcp = RankingCardPresenter.new("Most Premature Death", "premature-death")
-    set_collection(rcp, County.premature_death)
+    set_rounded_collection(rcp, County.premature_death)
   end
 
   def low_birth_weight
@@ -41,7 +41,7 @@ class CountyIndexPresenter
 
   def diabetes
     rcp = RankingCardPresenter.new("Most Diabetes", "diabetes")
-    set_collection(rcp, County.diabetes)
+    set_percent_collection(rcp, County.diabetes)
   end
 
   def set_collection(rcp, collection)
@@ -55,6 +55,15 @@ class CountyIndexPresenter
     counties = collection.map do |county|
       cd = CountyDecorator.new(county)
       cd.set_percent
+      cd
+    end
+    rcp.set_collection(counties)
+  end
+
+  def set_rounded_collection(rcp, collection)
+    counties = collection.map do |county|
+      cd = CountyDecorator.new(county)
+      cd.set_rounded
       cd
     end
     rcp.set_collection(counties)
