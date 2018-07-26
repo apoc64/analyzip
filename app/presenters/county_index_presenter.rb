@@ -1,7 +1,7 @@
 class CountyIndexPresenter
-  attr_reader :card_1,
-              :card_2,
-              :card_3,
+  attr_reader :premature_death,
+              :low_birth_weight,
+              :diabetes,
               :lat,
               :lng,
               :ne_lat,
@@ -12,9 +12,9 @@ class CountyIndexPresenter
               :map_name
 
   def initialize
-    @card_1 = premature_deaths
-    @card_2 = low_birth_weight
-    @card_3 = diabetes
+    @premature_death = find_premature_deaths
+    @low_birth_weight = find_low_birth_weight
+    @diabetes = find_diabetes
 
     # extract class: MapData - default is US ~~ serialize for db objects???
     @lat = 40
@@ -29,17 +29,17 @@ class CountyIndexPresenter
 
   private
 
-  def premature_deaths
+  def find_premature_deaths
     rcp = RankingCardPresenter.new("Most Premature Death", "premature-death")
     set_rounded_collection(rcp, County.premature_death)
   end
 
-  def low_birth_weight
+  def find_low_birth_weight
     rcp = RankingCardPresenter.new("Most Low Birth Weight", "low-birth-weight")
     set_percent_collection(rcp, County.low_birth_weight)
   end
 
-  def diabetes
+  def find_diabetes
     rcp = RankingCardPresenter.new("Most Diabetes", "diabetes")
     set_percent_collection(rcp, County.diabetes)
   end
