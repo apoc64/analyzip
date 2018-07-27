@@ -24,7 +24,13 @@ describe 'user visits home page' do
 
     click_on 'Sign in with Google'
 
-    expect(page).to have_content('Welcome, Bob')
+    expect(page).to have_content('Welcome, Steve')
     expect(page).to have_link('Logout')
   end
+end
+
+describe 'user visits login page' do
+end
+
+describe 'user logs out' do
 end

@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     # binding.pry
-  where(email: auth.info.email).first_or_initialize.tap do |user|
-    user.first_name = auth.info.first_name
-    user.last_name = auth.info.last_name
-    user.token = auth.credentials.token
+    where(email: auth.info.email).first_or_initialize.tap do |user|
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.token = auth.credentials.token
 
-    user.save!
+      user.save!
+    end
   end
-end
 end
