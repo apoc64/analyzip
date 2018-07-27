@@ -34,8 +34,16 @@ describe 'user visits home page' do
     expect(current_path).to eq(root_path)
     expect(page).to have_link('Login')
     expect(page).to_not have_link('Logout')
+
   end
 end
 
 describe 'user visits login page' do
+  it 'allows user to login with email and password' do
+    visit '/'
+
+    click_on 'Login'
+
+    expect(current_path).to eq('/Login')
+  end
 end

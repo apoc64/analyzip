@@ -11,4 +11,8 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to '/'
   end
+
+  def new
+    @presenter = UserPresenter.new(current_user)
+  end
 end
