@@ -14,7 +14,7 @@ describe 'user visits home page' do
     allow_any_instance_of(Google).to receive(:bounds).and_return({"northeast" => {"lat" => 0, "lng" => 0}, "southwest" => {"lat" => 0, "lng" => 0}})
 
     visit '/'
-# binding.pry
+
     expect(page.body).to include("<title>AnalyZip</title>")
     expect(page.body).to include('<meta name="description" content="Analyze socio-economic, health, tax and other data with maps for zip codes, states and other geographic entities.">')
 

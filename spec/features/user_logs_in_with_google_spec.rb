@@ -16,21 +16,26 @@ def stub_omniauth
 end
 
 describe 'user visits home page' do
-  it 'logs in with google' do
+  it 'logs in and out with google' do
     stub_omniauth
 
     visit root_path
     expect(page).to_not have_content('Logout')
+    expect(page).to have_link('Login')
 
     click_on 'Sign in with Google'
 
     expect(page).to have_content('Welcome, Steve')
     expect(page).to have_link('Logout')
+    expect(page).to_not have_link('Login')
+
+    click_on 'Logout'
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_link('Login')
+    expect(page).to_not have_link('Logout')
   end
 end
 
 describe 'user visits login page' do
-end
-
-describe 'user logs out' do
 end
