@@ -13,13 +13,6 @@ class StatePresenter < Presenter
   def_delegator :@state, :low_incomes
   def_delegator :@state, :counties
 
-  # attr_reader :lat,
-  #             :lng,
-  #             :ne_lat,
-  #             :ne_lng,
-  #             :sw_lat,
-  #             :sw_lng
-
   def initialize(state_id, current_user)
     @state = State.find(state_id)
     set_user(current_user)

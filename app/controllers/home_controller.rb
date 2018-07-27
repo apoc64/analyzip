@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @presenter = Presenter.new
-    @presenter.set_user(current_user)
+    @presenter = UserPresenter.new(current_user)
   end
 end
