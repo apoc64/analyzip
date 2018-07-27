@@ -1,5 +1,5 @@
-class ZipPresenter
-  extend Forwardable
+class ZipPresenter < Presenter
+  # extend Forwardable
   def_delegator :@zip, :n1
   def_delegator :@zip, :percent_single
   def_delegator :@zip, :percent_joint
@@ -10,16 +10,18 @@ class ZipPresenter
   def_delegator :@zip, :state
   def_delegator :@zip, :code
 
-  attr_reader :zip,
-              :lat,
-              :lng,
-              :ne_lat,
-              :ne_lng,
-              :sw_lat,
-              :sw_lng
+  attr_reader :zip
+              # :lat,
+              # :lng,
+              # :ne_lat,
+              # :ne_lng,
+              # :sw_lat,
+              # :sw_lng
 
-  def initialize(zip_code)
+  def initialize(zip_code, current_user)
     @zip = Zip.find(zip_code)
+    set_user(current_user)
+
     google = Google.new(zip.code)
     set_lat_lng(google)
   end

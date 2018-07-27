@@ -3,13 +3,6 @@ class CountyPresenter < Presenter
   # extend Forwardable
   # include Presenter
 
-  def initialize(county_id, current_user)
-    @county = County.find(county_id)
-    set_user(current_user)
-    google = Google.new(google_map_name)
-    set_lat_lng(google)
-    # binding.pry
-  end
 
   def_delegator :@county, :name
   def_delegator :@county, :measure_1_value, :premature_death
@@ -30,13 +23,21 @@ class CountyPresenter < Presenter
   def_delegator :@county, :measure_142_value, :segregation_nw
   def_delegator :@county, :state
 
-  attr_reader :county,
-              :lat,
-              :lng,
-              :ne_lat,
-              :ne_lng,
-              :sw_lat,
-              :sw_lng
+  attr_reader :county
+              # :lat,
+              # :lng,
+              # :ne_lat,
+              # :ne_lng,
+              # :sw_lat,
+              # :sw_lng
+              
+  def initialize(county_id, current_user)
+    @county = County.find(county_id)
+    set_user(current_user)
+    google = Google.new(google_map_name)
+    set_lat_lng(google)
+    # binding.pry
+  end
 
 
   def low_birth_weight

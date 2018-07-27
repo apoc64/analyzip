@@ -1,9 +1,12 @@
-class ZipsIndexPresenter
+class ZipsIndexPresenter < Presenter
   attr_reader :high_incomes,
               :low_incomes,
               :highest_pops
 
-  def initialize
+  def initialize(current_user)
+    set_user(current_user)
+    set_default_map
+
     # move to model class methods
     @high_incomes = Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income DESC').limit(10)
     @low_incomes = Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)

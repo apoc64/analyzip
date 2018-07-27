@@ -4,7 +4,13 @@ class Presenter
   def_delegator :@user, :log_action
   def_delegator :@user, :log_path
 
-  attr_reader :user
+  attr_reader :user,
+              :lat,
+              :lng,
+              :ne_lat,
+              :ne_lng,
+              :sw_lat,
+              :sw_lng
 
   def set_user(current_user)
     page_user = current_user || User.new

@@ -4,12 +4,12 @@ class CountyIndexPresenter < Presenter
   attr_reader :premature_death,
               :low_birth_weight,
               :diabetes,
-              :lat,
-              :lng,
-              :ne_lat,
-              :ne_lng,
-              :sw_lat,
-              :sw_lng,
+              # :lat,
+              # :lng,
+              # :ne_lat,
+              # :ne_lng,
+              # :sw_lat,
+              # :sw_lng,
               :name,
               :map_name
 

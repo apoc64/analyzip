@@ -14,6 +14,4 @@ class RankingCardPresenter
     # binding.pry
     self
   end
-
-
 end
