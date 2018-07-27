@@ -1,4 +1,6 @@
-class CountyIndexPresenter
+class CountyIndexPresenter < Presenter
+  # include Presenter
+
   attr_reader :premature_death,
               :low_birth_weight,
               :diabetes,
@@ -11,20 +13,22 @@ class CountyIndexPresenter
               :name,
               :map_name
 
-  def initialize
+  def initialize(current_user)
     @premature_death = find_premature_deaths
     @low_birth_weight = find_low_birth_weight
     @diabetes = find_diabetes
 
     # extract class: MapData - default is US ~~ serialize for db objects???
-    @lat = 40
-    @lng = -85
-    @ne_lat = 50
-    @ne_lng = -70
-    @sw_lat = 30
-    @sw_lng = -120
-    @name = "United States"
-    @map_name = "united%states"
+    set_user(current_user)
+    set_default_map
+    # @lat = 40
+    # @lng = -85
+    # @ne_lat = 50
+    # @ne_lng = -70
+    # @sw_lat = 30
+    # @sw_lng = -120
+    # @name = "United States"
+    # @map_name = "united%states"
   end
 
   private
