@@ -1,10 +1,14 @@
 class UserPresenter
   extend Forwardable
   def_delegator :@user, :first_name
+  def_delegator :@user, :log_action
+  def_delegator :@user, :log_path
 
   attr_reader :user
 
-  def initialize(user_id)
-    @user = User.find(user_id)
+  def initialize(current_user)
+    # in presenter module:???
+    page_user = current_user || User.new
+    @user = UserDecorator.new(page_user)
   end
 end
