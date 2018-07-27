@@ -29,10 +29,10 @@ class Presenter
   end
 
   def page_title
-
+    "AnalyZip"
   end
 
-  def description
-
+  def page_description
+    "Analyze socio-economic, health, tax and other data with maps for zip codes, states and other geographic entities."
   end
 end

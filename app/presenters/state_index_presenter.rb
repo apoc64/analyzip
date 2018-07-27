@@ -15,4 +15,8 @@ class StateIndexPresenter < Presenter
     set_user(current_user)
     set_default_map
   end
+
+  def page_title
+    "All States - AnalyZip"
+  end
 end

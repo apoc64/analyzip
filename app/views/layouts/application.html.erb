@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AnalyZip</title>
+    <title><%= @presenter.page_title %></title>
+    <meta name="description" content="<%= @presenter.page_description %>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,12 +22,7 @@
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
-            <!-- REMOVE IF -->
-
-
             <li><%= link_to @presenter.log_action, @presenter.log_path %>
-            
-
             <li><%= link_to "States", states_path %></li>
             <li><%= link_to "Counties", counties_path %></li>
             <li><%= link_to "Zip Codes", zips_path %></li>
