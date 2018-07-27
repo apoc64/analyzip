@@ -3,7 +3,15 @@ require 'rails_helper'
 def stub_omniauth
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
-
+      provider: 'google',
+      info: {
+        first_name: 'Steve',
+        last_name: 'Schwedt',
+        email: 'sschwedt@gmail.com'
+      },
+      credentials: {
+      token: Rails.application.credentials.google[:test_token]
+      }
     })
 end
 
