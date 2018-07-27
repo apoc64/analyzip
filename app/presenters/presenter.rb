@@ -10,7 +10,8 @@ class Presenter
               :ne_lat,
               :ne_lng,
               :sw_lat,
-              :sw_lng
+              :sw_lng,
+              :map_name
 
   def set_user(current_user)
     page_user = current_user || User.new

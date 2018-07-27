@@ -4,8 +4,7 @@ class CountyIndexPresenter < Presenter
   attr_reader :premature_death,
               :low_birth_weight,
               :diabetes,
-              :name,
-              :map_name
+              :name
 
   def initialize(current_user)
     @premature_death = find_premature_deaths
