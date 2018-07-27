@@ -1,18 +1,18 @@
-<h3 class="center"><%= @zip.code %></h3>
-<h5 class="center">Located in: <%= link_to @zip.state_name, state_path(@zip.state) %></h5>
+<h3 class="center"><%= @presenter.code %></h3>
+<h5 class="center">Located in: <%= link_to @presenter.state_name, state_path(@presenter.state) %></h5>
 
 <div class="row">
   <div class="col s12 m4">
     <div class="card-panel grey lighten-5 hoverable base-card">
       <h5 class="center teal-text text-darken-4">Basic IRS Data</h5>
-      <p>No. of Returns: <span class="right"><%= number_with_delimiter(@zip.n1) %></p>
-      <p>Percent Single: <span class="right"><%= @zip.percent_single %>%</span></p>
-      <p>Percent Joint File: <span class="right"><%= @zip.percent_joint %>%</span></p>
-      <p>Percent HOH: <span class="right"><%= @zip.percent_hoh %>%</span></p>
-      <p>Percent Paid Prep: <span class="right"><%= @zip.percent_paid_prep %>%</span></p>
-      <p>Avg Dependents: <span class="right"><%= @zip.average_dependents %></span></p>
-      <p>Percent Elderly: <span class="right"><%= @zip.percent_elderly %>%</span></p>
-      <p>Avg Income: <span class="right"><%= number_to_currency(@zip.mean_income, precision: 0) %></span></p>
+      <p>No. of Returns: <span class="right"><%= number_with_delimiter(@presenter.n1) %></p>
+      <p>Percent Single: <span class="right"><%= @presenter.percent_single %>%</span></p>
+      <p>Percent Joint File: <span class="right"><%= @presenter.percent_joint %>%</span></p>
+      <p>Percent HOH: <span class="right"><%= @presenter.percent_hoh %>%</span></p>
+      <p>Percent Paid Prep: <span class="right"><%= @presenter.percent_paid_prep %>%</span></p>
+      <p>Avg Dependents: <span class="right"><%= @presenter.average_dependents %></span></p>
+      <p>Percent Elderly: <span class="right"><%= @presenter.percent_elderly %>%</span></p>
+      <p>Avg Income: <span class="right"><%= number_to_currency(@presenter.mean_income, precision: 0) %></span></p>
     </div>
   </div>
 </div>
@@ -20,16 +20,16 @@
 <div id="map-info"></div>
 <div id="map"></div>
 
-<% if @zip.lat %>
+<% if @presenter.lat %>
 <!-- if there is a valid map -->
 <script>
-  const lat = <%= @zip.lat %>;
-  const lng = <%= @zip.lng %>;
-  const ne_lat = <%= @zip.ne_lat %>;
-  const ne_lng = <%= @zip.ne_lng %>;
-  const sw_lat = <%= @zip.sw_lat %>;
-  const sw_lng = <%= @zip.sw_lng %>;
-  const title = <%= @zip.code %>
+  const lat = <%= @presenter.lat %>;
+  const lng = <%= @presenter.lng %>;
+  const ne_lat = <%= @presenter.ne_lat %>;
+  const ne_lng = <%= @presenter.ne_lng %>;
+  const sw_lat = <%= @presenter.sw_lat %>;
+  const sw_lng = <%= @presenter.sw_lng %>;
+  const title = <%= @presenter.code %>
 
   var highIncomes = [];
   var lowIncomes = [];

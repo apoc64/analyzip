@@ -1,24 +1,24 @@
-<h3 class="center"><%= @state.name %></h3>
+<h3 class="center"><%= @presenter.name %></h3>
 
 <div class="row">
   <div class="col s12 m4">
     <div class="card-panel grey lighten-5 hoverable base-card">
       <h5 class="center teal-text text-darken-4">Basic IRS Data</h5>
-      <p>No. of Returns: <span class="right"><%= number_with_delimiter(@state.n1) %></p>
-      <p>Percent Single: <span class="right"><%= @state.percent_single %>%</span></p>
-      <p>Percent Joint File: <span class="right"><%= @state.percent_joint %>%</span></p>
-      <p>Percent HOH: <span class="right"><%= @state.percent_hoh %>%</span></p>
-      <p>Percent Paid Prep: <span class="right"><%= @state.percent_paid_prep %>%</span></p>
-      <p>Avg Dependents: <span class="right"><%= @state.average_dependents %></span></p>
-      <p>Percent Elderly: <span class="right"><%= @state.percent_elderly %>%</span></p>
-      <p>Avg Income: <span class="right"><%= number_to_currency(@state.mean_income, precision: 0) %></span></p>
+      <p>No. of Returns: <span class="right"><%= number_with_delimiter(@presenter.n1) %></p>
+      <p>Percent Single: <span class="right"><%= @presenter.percent_single %>%</span></p>
+      <p>Percent Joint File: <span class="right"><%= @presenter.percent_joint %>%</span></p>
+      <p>Percent HOH: <span class="right"><%= @presenter.percent_hoh %>%</span></p>
+      <p>Percent Paid Prep: <span class="right"><%= @presenter.percent_paid_prep %>%</span></p>
+      <p>Avg Dependents: <span class="right"><%= @presenter.average_dependents %></span></p>
+      <p>Percent Elderly: <span class="right"><%= @presenter.percent_elderly %>%</span></p>
+      <p>Avg Income: <span class="right"><%= number_to_currency(@presenter.mean_income, precision: 0) %></span></p>
     </div>
   </div>
   <div class="col s12 m4">
     <div class="card-panel grey lighten-5 hoverable high-incomes">
       <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
       <ol>
-        <% @state.high_incomes.each do |zip| %>
+        <% @presenter.high_incomes.each do |zip| %>
         <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
@@ -28,7 +28,7 @@
     <div class="card-panel grey lighten-5 hoverable low-incomes">
       <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
       <ol>
-        <% @state.low_incomes.each do |zip| %>
+        <% @presenter.low_incomes.each do |zip| %>
         <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
@@ -39,34 +39,34 @@
 <div id="map-info"></div>
 <div id="map"></div>
 
-<h5 class="center">Zip Codes in <%= @state.name %></h5>
-<% @state.zips.each do |zip| %>
+<h5 class="center">Zip Codes in <%= @presenter.name %></h5>
+<% @presenter.zips.each do |zip| %>
   <%= link_to zip.code, zip_path(zip) %>
 <% end %>
 
-<h5 class="center">Counties in <%= @state.name %></h5>
-<% @state.counties.each do |county| %>
+<h5 class="center">Counties in <%= @presenter.name %></h5>
+<% @presenter.counties.each do |county| %>
   <%= link_to county.name, county_path(county) %>
 <% end %>
 
 <!-- if there is a valid map -->
-<% if @state.lat %>
+<% if @presenter.lat %>
   <script>
-    const lat = <%= @state.lat %>
-    const lng = <%= @state.lng %>
-    const ne_lat = <%= @state.ne_lat %>
-    const ne_lng = <%= @state.ne_lng %>
-    const sw_lat = <%= @state.sw_lat %>
-    const sw_lng = <%= @state.sw_lng %>
-    const title = "<%= @state.name %>"
+    const lat = <%= @presenter.lat %>
+    const lng = <%= @presenter.lng %>
+    const ne_lat = <%= @presenter.ne_lat %>
+    const ne_lng = <%= @presenter.ne_lng %>
+    const sw_lat = <%= @presenter.sw_lat %>
+    const sw_lng = <%= @presenter.sw_lng %>
+    const title = "<%= @presenter.name %>"
 
     var highIncomes = []
     var lowIncomes = []
 
-    <% @state.high_incomes.each do |zip| %>
+    <% @presenter.high_incomes.each do |zip| %>
       highIncomes.push("<%= zip.code %>")
     <% end %>
-    <% @state.low_incomes.each do |zip| %>
+    <% @presenter.low_incomes.each do |zip| %>
       lowIncomes.push("<%= zip.code %>")
     <% end %>
   </script>

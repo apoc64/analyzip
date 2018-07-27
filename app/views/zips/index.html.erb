@@ -5,7 +5,7 @@
     <div class="card-panel grey lighten-5 hoverable">
       <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
       <ol>
-        <% @zips.high_incomes.each do |zip| %>
+        <% @presenter.high_incomes.each do |zip| %>
         <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
@@ -15,7 +15,7 @@
     <div class="card-panel grey lighten-5 hoverable">
       <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
       <ol>
-        <% @zips.low_incomes.each do |zip| %>
+        <% @presenter.low_incomes.each do |zip| %>
         <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
         <% end %>
       </ol>
@@ -25,7 +25,7 @@
     <div class="card-panel grey lighten-5 hoverable">
       <h5 class="center teal-text text-darken-4">Highest Pops:</h5>
       <ol>
-        <% @zips.highest_pops.each do |zip| %>
+        <% @presenter.highest_pops.each do |zip| %>
         <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_with_delimiter(zip.n1) %></span></li>
         <% end %>
       </ol>

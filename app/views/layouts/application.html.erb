@@ -22,10 +22,10 @@
           </a>
           <ul class="right hide-on-med-and-down">
             <!-- REMOVE IF -->
-            
-            <% if @presenter.respond_to?(:log_action) %>
+
+
             <li><%= link_to @presenter.log_action, @presenter.log_path %>
-            <% end %>
+            
 
             <li><%= link_to "States", states_path %></li>
             <li><%= link_to "Counties", counties_path %></li>

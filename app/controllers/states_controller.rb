@@ -4,6 +4,6 @@ class StatesController < ApplicationController
   end
 
   def show
-    @state = StatePresenter.new(params[:id], current_user)
+    @presenter = StatePresenter.new(params[:id], current_user)
   end
 end
