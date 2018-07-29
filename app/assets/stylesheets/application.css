@@ -41,6 +41,47 @@ footer p {
   padding: 0;
 }
 
+.social-logins {
+  padding: 2em;
+}
+.google-button {
+  background-color: #4285F4;
+  height: 50px;
+  width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+.google-button:visited {
+  background-color: #4285F4;
+}
+.google-button-div {
+  padding: 0px;
+  margin: 0px;
+  height: 50px;
+  width: 240px;
+  align-content: center;
+  display: float;
+}
+.google-button-img {
+  height: 50px;
+  width: 50px;
+  padding: 0px;
+  margin-left: 0px;
+  /* margin-right: auto; */
+  float: left;
+}
+.google-button-text {
+  font-family: 'Roboto';
+  /* font-style: medium; */
+  color: white;
+  padding: 10pt;
+  font-size: 14pt;
+  /* margin-bottom: 8px; */
+  text-align: center;
+  float: right;
+}
+
 @media only screen and (max-width: 600px) {
   .az-logo {
     padding-top: 6px;

@@ -28,7 +28,19 @@
 <h3 class="center">Welcome to AnalyZip</h3>
 <p class="flow-text">We aim to allow non-profits access to a wide range of data with an easy to use interface to help them improve their decision making and do more good in their communities. Zip codes are convienient geographic entities with a wealth of public data available for each one of the over 27,000 in the United States. Our site pulls data from the IRS and other sources, and makes the data easily readable, searchable, and connected to Google Maps. We hope this service empowers you to assist those in your community and across the country.</p>
 
-<%= link_to 'Sign in with Google', '/auth/google' %>
+<hr>
+
+<h5 class='center'>Sign in for added features</h5>
+<!-- <%= link_to 'Sign in with Google', '/auth/google' %> -->
+<div class='social-logins center'>
+  <form method="get" action='/auth/google'>
+    <button type='submit' class='google-button center hoverable'><div class='google-button-div valign-wrapper'>
+      <%= image_tag("btn_google_dark_normal_ios.svg") %>
+      <div class='google-button-text'>Sign in with Google</div>
+    </div>
+  </button>
+</form>
+</div>
 
 <script>
   const slider = document.querySelector('.slider');
