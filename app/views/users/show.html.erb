@@ -1,1 +1,7 @@
 <h3 class='center'>Welcome, <%= @presenter.first_name %></h3>
+
+<ul>
+<%= @presenter.zips.each do |zip| %>
+<li><%= link_to zip.code, zip_path(zip) %>: <%= zip.comment %></li>
+<% end %>
+</ul>
