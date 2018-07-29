@@ -1,54 +1,35 @@
-class CountyIndexPresenter
-  attr_reader :card_1,
-              :card_2,
-              :card_3,
-              :lat,
-              :lng,
-              :ne_lat,
-              :ne_lng,
-              :sw_lat,
-              :sw_lng,
-              :name,
-              :map_name
+class CountyIndexPresenter < Presenter
+  # include Presenter
 
-  def initialize
-    @card_1 = premature_deaths
-    @card_2 = low_birth_weight
-    @card_3 = diabetes
+  attr_reader :premature_death,
+              :low_birth_weight,
+              :diabetes,
+              :name
 
-    # extract class: MapData - default is US ~~ serialize for db objects???
-    @lat = 40
-    @lng = -85
-    @ne_lat = 50
-    @ne_lng = -70
-    @sw_lat = 30
-    @sw_lng = -120
-    @name = "United States"
-    @map_name = "united%states"
+  def initialize(current_user)
+    @premature_death = find_premature_deaths
+    @low_birth_weight = find_low_birth_weight
+    @diabetes = find_diabetes
+
+    set_user(current_user)
+    set_default_map
   end
 
   private
 
-  def premature_deaths
+  def find_premature_deaths
     rcp = RankingCardPresenter.new("Most Premature Death", "premature-death")
     set_rounded_collection(rcp, County.premature_death)
   end
 
-  def low_birth_weight
+  def find_low_birth_weight
     rcp = RankingCardPresenter.new("Most Low Birth Weight", "low-birth-weight")
     set_percent_collection(rcp, County.low_birth_weight)
   end
 
-  def diabetes
+  def find_diabetes
     rcp = RankingCardPresenter.new("Most Diabetes", "diabetes")
     set_percent_collection(rcp, County.diabetes)
-  end
-
-  def set_collection(rcp, collection)
-    counties = collection.map do |county|
-      CountyDecorator.new(county)
-    end
-    rcp.set_collection(counties)
   end
 
   def set_percent_collection(rcp, collection)

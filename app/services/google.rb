@@ -1,9 +1,6 @@
 class Google
   def initialize(location)
-    if location == "New York"
-      location = "New York State"
-    end
-    @location = location
+    @location = validate_location(location)
   end
 
   def center
@@ -40,5 +37,12 @@ class Google
   def invalid
     # 81041 ??? now its there???
     response["status"] == "ZERO_RESULTS"
+  end
+
+  def validate_location(location)
+    if location == "New York"
+      location = "New York State"
+    end
+    return location
   end
 end

@@ -1,9 +1,8 @@
-class CountyPresenter
-  extend Forwardable
+class CountyPresenter < Presenter
+
   def_delegator :@county, :name
   def_delegator :@county, :measure_1_value, :premature_death
   def_delegator :@county, :measure_2_value, :poor_health
-  # def_delegator :@county, :measure_37_value, :low_birth_weight
   def_delegator :@county, :measure_45_value, :sti_prevalence
   def_delegator :@county, :measure_14_value, :teen_births
   def_delegator :@county, :measure_60_value, :diabetes_prevalence
@@ -19,20 +18,16 @@ class CountyPresenter
   def_delegator :@county, :measure_142_value, :segregation_nw
   def_delegator :@county, :state
 
-  attr_reader :county,
-              :lat,
-              :lng,
-              :ne_lat,
-              :ne_lng,
-              :sw_lat,
-              :sw_lng
+  attr_reader :county
 
-  def initialize(county_id)
+  def initialize(county_id, current_user)
     @county = County.find(county_id)
+    set_user(current_user)
+
     google = Google.new(google_map_name)
     set_lat_lng(google)
-    # binding.pry
   end
+
 
   def low_birth_weight
     (@county.measure_37_value.to_f * 100).round(2)

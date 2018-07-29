@@ -11,9 +11,6 @@ class RankingCardPresenter
 
   def set_collection(source)
     @collection = source
-    # binding.pry
     self
   end
-
-
 end
