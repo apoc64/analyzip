@@ -25,7 +25,7 @@ describe 'user visits zip show page' do
 
     click_on "Login or Sign Up to add this zip to my favorites"
 
-    expect(current_path).to eq('/login')
+    expect(current_path).to eq('/Login')
   end
 
   it 'lets a logged in user favorite a zip code' do
