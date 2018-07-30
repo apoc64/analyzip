@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates_presence_of :last_name
   validates :email, presence: true, uniqueness: true
 
-  has_many :user_zips
+  has_many :user_zips, dependent: :nullify
   has_many :zips, through: :user_zips
 
   def self.from_omniauth(auth)

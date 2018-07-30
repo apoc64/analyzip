@@ -9,7 +9,8 @@ class ZipPresenter < Presenter
   def_delegator :@zip, :state
   def_delegator :@zip, :code
 
-  attr_reader :zip
+  attr_reader :zip,
+              :fav_submit_message
 
   def initialize(zip_code, current_user)
     @zip = Zip.find(zip_code)
@@ -29,8 +30,10 @@ class ZipPresenter < Presenter
 
   def favorite
     if @user.user_zips.exists?(zip_id: zip.id)
+      @fav_submit_message = "Remove from my favorites"
       @user.user_zips.find_by(zip_id: zip.id)
     else
+      @fav_submit_message = "Add to my favorites"
       @user.user_zips.new
     end
   end
