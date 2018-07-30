@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :counties, only: [:index, :show]
   resources :zips, only: [:index, :show]
   resources :users, only: [:show]
+  resources :user_zips, only: [:create, :update]
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get '/Login', to: 'sessions#new'

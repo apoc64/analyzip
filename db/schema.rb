@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_144828) do
+ActiveRecord::Schema.define(version: 2018_07_30_010935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -673,6 +673,16 @@ ActiveRecord::Schema.define(version: 2018_07_27_144828) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_zips", force: :cascade do |t|
+    t.string "comment"
+    t.bigint "zip_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_zips_on_user_id"
+    t.index ["zip_id"], name: "index_user_zips_on_zip_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -820,5 +830,7 @@ ActiveRecord::Schema.define(version: 2018_07_27_144828) do
   end
 
   add_foreign_key "counties", "states"
+  add_foreign_key "user_zips", "users"
+  add_foreign_key "user_zips", "zips"
   add_foreign_key "zips", "states"
 end

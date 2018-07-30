@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
     # end
   end
 
-  # describe 'relationships' do
-  #   it {should have_many(:zips) through...}
-  #   it {should have_many(:counties)}
-  # end
+  describe 'relationships' do
+    it {should have_many(:user_zips)}
+    it {should have_many(:zips).through(:user_zips)}
+  end
 end

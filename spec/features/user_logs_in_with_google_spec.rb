@@ -29,7 +29,9 @@ describe 'user visits home page' do
     expect(page).to have_link('Logout')
     expect(page).to_not have_link('Login')
 
-    click_on 'Logout'
+    within('.nav-wrapper') do
+      click_on 'Logout'
+    end
 
     expect(current_path).to eq(root_path)
     expect(page).to have_link('Login')
@@ -42,7 +44,9 @@ describe 'user visits login page' do
   it 'allows user to login with email and password' do
     visit '/'
 
-    click_on 'Login'
+    within('.nav-wrapper') do
+      click_on 'Login'
+    end
 
     expect(current_path).to eq('/Login')
   end
