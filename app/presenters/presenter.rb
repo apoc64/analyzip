@@ -3,6 +3,8 @@ class Presenter
   def_delegator :@user, :first_name
   def_delegator :@user, :log_action
   def_delegator :@user, :log_path
+  def_delegator :@user, :user_action
+  def_delegator :@user, :current_user_path
   def_delegator :@user, :fav_partial
 
   attr_reader :user,
