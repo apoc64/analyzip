@@ -28,8 +28,8 @@ class ZipPresenter < Presenter
   end
 
   def favorite
-    if @user.zips.exists?(zip_id: zip.id)
-      @user.user_zips.find(zip.id)
+    if @user.user_zips.exists?(zip_id: zip.id)
+      @user.user_zips.find_by(zip_id: zip.id)
     else
       @user.user_zips.new
     end
