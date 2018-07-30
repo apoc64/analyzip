@@ -27,6 +27,14 @@ class ZipPresenter < Presenter
     @zip.average_dependents.round(2)
   end
 
+  def favorite
+    if @user.zips.exists?(zip_id: zip.id)
+      @user.user_zips.find(zip.id)
+    else
+      @user.user_zips.new
+    end
+  end
+
   private
 
   def set_lat_lng(google)
