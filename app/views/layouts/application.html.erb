@@ -24,7 +24,8 @@
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
-            <li><%= link_to @presenter.log_action, @presenter.log_path %>
+            <li><%= link_to @presenter.user_action, @presenter.current_user_path %></li>
+            <li><%= link_to @presenter.log_action, @presenter.log_path %></li>
             <li><%= link_to "States", states_path %></li>
             <li><%= link_to "Counties", counties_path %></li>
             <li><%= link_to "Zip Codes", zips_path %></li>
@@ -34,7 +35,8 @@
     </nav>
   </div>
   <ul class="sidenav" id="mobile-nav">
-    <li><%= link_to @presenter.log_action, @presenter.log_path %>
+    <li><%= link_to @presenter.user_action, @presenter.current_user_path %></li>
+    <li><%= link_to @presenter.log_action, @presenter.log_path %></li>
     <li><%= link_to "States", states_path %></li>
     <li><%= link_to "Counties", counties_path %></li>
     <li><%= link_to "Zip Codes", zips_path %></li>

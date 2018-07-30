@@ -14,6 +14,22 @@ class UserDecorator < SimpleDelegator
     "/#{log_action}"
   end
 
+  def user_action
+    if persisted?
+      "Profile"
+    else
+      "Sign Up"
+    end
+  end
+
+  def current_user_path
+    if persisted?
+      "/users/#{id}"
+    else
+      "/Login"
+    end
+  end
+
   def fav_partial
     if persisted?
       "fav_add"
