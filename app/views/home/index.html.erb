@@ -30,8 +30,9 @@
 
 <hr>
 
-<h5 class='center'>Sign in for added features</h5>
-<!-- <%= link_to 'Sign in with Google', '/auth/google' %> -->
+  <%= render partial: "partials/login" %>
+<!-- <h5 class='center'>Sign in for added features</h5>
+
 <div class='social-logins center'>
   <form method="get" action='/auth/google'>
     <button type='submit' class='google-button center hoverable'><div class='google-button-div valign-wrapper'>
@@ -40,7 +41,7 @@
     </div>
   </button>
 </form>
-</div>
+</div> -->
 
 <script>
   const slider = document.querySelector('.slider');
