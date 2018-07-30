@@ -9,6 +9,13 @@ class UserZipsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def destroy
+    # binding.pry
+    user_zip = UserZip.find(params[:id])
+    user_zip.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def uz_params
