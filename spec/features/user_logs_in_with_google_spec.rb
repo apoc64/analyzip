@@ -42,7 +42,9 @@ describe 'user visits login page' do
   it 'allows user to login with email and password' do
     visit '/'
 
-    click_on 'Login'
+    within('.nav-wrapper') do
+      click_on 'Login'
+    end
 
     expect(current_path).to eq('/Login')
   end
