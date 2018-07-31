@@ -52,7 +52,7 @@ function addMarker(latLng, components, shouldOpen) {
   infoWindow.setContent(message);
   if(shouldOpen){
     openWindow(infoWindow, marker)
-  } 
+  }
   marker.addListener('click', function() {
     openWindow(infoWindow, marker)
   })
@@ -94,7 +94,7 @@ links.forEach(function(link) {
   })
 })
 
-// if map has high income card, set event listener:
+// Event listeners for cards:
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
   const highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
@@ -102,13 +102,33 @@ if(!(highIncomes === undefined || highIncomes.length == 0)) {
   }) // end high incomes event listener
 } // end if high incomes
 
-// if map has low income card, set event listener:
 if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
   const lowIncomeCard = document.querySelector('.low-incomes');
   lowIncomeCard.addEventListener('click', function() {
     placeMarkers(lowIncomes, "Lowest income")
   }) // end high incomes event listener
 } // end if high incomes
+
+if(!(prematureDeath === undefined || prematureDeath.length == 0)) {
+  const prematureDeathCard = document.querySelector('.premature-death');
+  prematureDeathCard.addEventListener('click', function() {
+    placeMarkers(prematureDeath, "Highest rates of premature death")
+  })
+}
+
+if(!(lowBirthWeight === undefined || lowBirthWeight.length == 0)) {
+  const lowBirthWeightCard = document.querySelector('.low-birth-weight');
+  lowBirthWeightCard.addEventListener('click', function() {
+    placeMarkers(lowBirthWeight, "Highest percentage of low birth weight")
+  })
+}
+
+if(!(diabetesPrevalence === undefined || diabetesPrevalence.length == 0)) {
+  const diabetesPrevalenceCard = document.querySelector('.diabetes');
+  diabetesPrevalenceCard.addEventListener('click', function() {
+    placeMarkers(diabetesPrevalence, "Highest rates of diabetes")
+  })
+}
 
 function placeMarkers(cardData, message) {
   if(!linkClicked) {
