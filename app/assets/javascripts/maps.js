@@ -4,6 +4,7 @@ const mapInfo = document.querySelector('#map-info')
 var markers = []
 var addressMarkers = []
 var linkClicked = false
+var openInfoWindow = null
 
 const bounds = {
   north: ne_lat,
@@ -50,11 +51,21 @@ function addMarker(latLng, components, shouldOpen) {
   var infoWindow = new google.maps.InfoWindow;
   infoWindow.setContent(message);
   if(shouldOpen){
-    infoWindow.open(map, marker);
-  }; // else?
-  // addEnventListener??
+    openWindow(infoWindow, marker)
+  } 
+  marker.addListener('click', function() {
+    openWindow(infoWindow, marker)
+  })
   markers.push([marker, infoWindow])
   return marker
+}
+
+function openWindow(infoWindow, marker) {
+  if(openInfoWindow) {
+    openInfoWindow.close()
+  }
+  infoWindow.open(map, marker)
+  openInfoWindow = infoWindow
 }
 
 function setAddressMessage(components) {
@@ -80,7 +91,6 @@ const links = document.querySelectorAll('a')
 links.forEach(function(link) {
   link.addEventListener('click', function() {
     linkClicked = true
-    console.log(linkClicked + "L")
   })
 })
 
@@ -101,7 +111,6 @@ if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
 } // end if high incomes
 
 function placeMarkers(cardData, message) {
-  console.log(linkClicked + "C");
   if(!linkClicked) {
     setMarkers(cardData)
     mapInfo.innerHTML = `<h6 class="center">${message} ${geoUnit} in ${title}:</h6>`
