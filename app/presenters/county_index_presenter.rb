@@ -7,11 +7,11 @@ class CountyIndexPresenter < Presenter
               :name
 
   def initialize(current_user)
-    @premature_death = find_premature_deaths
-    @low_birth_weight = find_low_birth_weight
-    @diabetes = find_diabetes
-
     set_user(current_user)
+    @premature_deaths = find_premature_deaths
+    @low_birth_weights = find_low_birth_weight
+    @diabetes_prevalences = find_diabetes
+
     set_default_map
   end
 

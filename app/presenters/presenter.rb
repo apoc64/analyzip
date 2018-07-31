@@ -16,13 +16,19 @@ class Presenter
               :sw_lng,
               :map_name,
               :high_incomes,
-              :low_incomes
+              :low_incomes,
+              :premature_deaths,
+              :low_birth_weights,
+              :diabetes_prevalences
 
   def set_user(current_user)
     page_user = current_user || User.new
     @user = UserDecorator.new(page_user)
     @high_incomes = []
     @low_incomes = []
+    @premature_deaths = RankingCardPresenter.new("", "")
+    @low_birth_weights = RankingCardPresenter.new("", "")
+    @diabetes_prevalences = RankingCardPresenter.new("", "")
   end
 
   def set_default_map

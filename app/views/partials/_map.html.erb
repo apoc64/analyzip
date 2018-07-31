@@ -12,12 +12,24 @@
 
   var highIncomes = [];
   var lowIncomes = [];
+  var prematureDeath = [];
+  var lowBirthWeight = [];
+  var diabetesPrevalence = [];
 
   <% @presenter.high_incomes.each do |zip| %>
     highIncomes.push("<%= zip.code %>")
   <% end %>
   <% @presenter.low_incomes.each do |zip| %>
     lowIncomes.push("<%= zip.code %>")
+  <% end %>
+  <% @presenter.premature_deaths.collection.each do |zip| %>
+    prematureDeath.push("<%= zip.code %>")
+  <% end %>
+  <% @presenter.low_birth_weights.collection.each do |zip| %>
+    lowBirthWeight.push("<%= zip.code %>")
+  <% end %>
+  <% @presenter.diabetes_prevalences.collection.each do |zip| %>
+    diabetesPrevalence.push("<%= zip.code %>")
   <% end %>
 </script>
 
