@@ -1,8 +1,8 @@
-<h3 class="center">Zip Codes</h3>
+<h3 class="center base-card">Zip Codes</h3>
 
 <div class="row">
   <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable">
+    <div class="card-panel grey lighten-5 hoverable high-incomes">
       <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
       <ol>
         <% @presenter.high_incomes.each do |zip| %>
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable">
+    <div class="card-panel grey lighten-5 hoverable low-incomes">
       <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
       <ol>
         <% @presenter.low_incomes.each do |zip| %>
