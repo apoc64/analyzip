@@ -1,13 +1,10 @@
-// console.log(highIncomes)
-// console.log(lowIncomes)
-// console.log(lat)
-
 var map
 var geocoder
 const mapInfo = document.querySelector('#map-info')
-// can these be cashed on client's browser?
 var markers = []
 var addressMarkers = []
+var linkClicked = false
+var openInfoWindow = null
 
 const bounds = {
   north: ne_lat,
@@ -54,11 +51,21 @@ function addMarker(latLng, components, shouldOpen) {
   var infoWindow = new google.maps.InfoWindow;
   infoWindow.setContent(message);
   if(shouldOpen){
-    infoWindow.open(map, marker);
-  }; // else?
-  // addEnventListener??
+    openWindow(infoWindow, marker)
+  } 
+  marker.addListener('click', function() {
+    openWindow(infoWindow, marker)
+  })
   markers.push([marker, infoWindow])
   return marker
+}
+
+function openWindow(infoWindow, marker) {
+  if(openInfoWindow) {
+    openInfoWindow.close()
+  }
+  infoWindow.open(map, marker)
+  openInfoWindow = infoWindow
 }
 
 function setAddressMessage(components) {
@@ -79,13 +86,19 @@ function setAddressMessage(components) {
   return `<h6><a href="/zips/${zip}">${zip}</a></h6><p>${county}</p><p>${state}</p>`;
 } // end of setAddressMessage
 
+// intercept card listeners on link click
+const links = document.querySelectorAll('a')
+links.forEach(function(link) {
+  link.addEventListener('click', function() {
+    linkClicked = true
+  })
+})
+
 // if map has high income card, set event listener:
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
   const highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
-    setMarkers(highIncomes)
-    mapInfo.innerHTML = `<h6 class="center">Highest income ${geoUnit} in ${title}:</h6>`
-    map.fitBounds(bounds, -10)
+    placeMarkers(highIncomes, "Highest income")
   }) // end high incomes event listener
 } // end if high incomes
 
@@ -93,11 +106,17 @@ if(!(highIncomes === undefined || highIncomes.length == 0)) {
 if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
   const lowIncomeCard = document.querySelector('.low-incomes');
   lowIncomeCard.addEventListener('click', function() {
-    setMarkers(lowIncomes)
-    mapInfo.innerHTML = `<h6 class="center">Lowest income ${geoUnit} in ${title}:</h6>`
-    map.fitBounds(bounds, -10)
+    placeMarkers(lowIncomes, "Lowest income")
   }) // end high incomes event listener
 } // end if high incomes
+
+function placeMarkers(cardData, message) {
+  if(!linkClicked) {
+    setMarkers(cardData)
+    mapInfo.innerHTML = `<h6 class="center">${message} ${geoUnit} in ${title}:</h6>`
+    map.fitBounds(bounds, -10)
+  }
+}
 
 const baseCard = document.querySelector('.base-card');
 baseCard.addEventListener('click', function() {

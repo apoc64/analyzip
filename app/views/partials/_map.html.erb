@@ -12,6 +12,13 @@
 
   var highIncomes = [];
   var lowIncomes = [];
+
+  <% @presenter.high_incomes.each do |zip| %>
+    highIncomes.push("<%= zip.code %>")
+  <% end %>
+  <% @presenter.low_incomes.each do |zip| %>
+    lowIncomes.push("<%= zip.code %>")
+  <% end %>
 </script>
 
 <%= javascript_include_tag 'maps' %>

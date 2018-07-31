@@ -14,11 +14,15 @@ class Presenter
               :ne_lng,
               :sw_lat,
               :sw_lng,
-              :map_name
+              :map_name,
+              :high_incomes,
+              :low_incomes
 
   def set_user(current_user)
     page_user = current_user || User.new
     @user = UserDecorator.new(page_user)
+    @high_incomes = []
+    @low_incomes = []
   end
 
   def set_default_map
