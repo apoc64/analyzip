@@ -2,6 +2,6 @@
 
 <ul>
   <% @presenter.user_zips.each do |user_zip| %>
-  <li><%= link_to user_zip.zip_id, zip_path(user_zip.zip_id) %>: <%= user_zip.comment %></li>
+    <li><%= link_to user_zip.zip.code, zip_path(user_zip.zip_id) %>: <%= user_zip.comment %></li>
   <% end %>
 </ul>
