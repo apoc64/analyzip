@@ -3,18 +3,25 @@
 This app takes data related to geographic entities and displays that data from the IRS and County Health Rankings alongside Google Maps.
 
 ## This app uses:
-Rails 5.2 . 
-Ruby 2.4.1 . 
-ES6 . 
-Google Maps . 
+Rails 5.2
+
+Ruby 2.4.1
+
+ES6
+
+Google Maps
 
 ## Getting Started
 Clone this repo. It contains large .csv files which may require additional time.
-> bundle install . 
-> bundle . 
-> rake db:create . 
-> rake db:migrate . 
-> rake db:seed . 
+> bundle install
+
+> bundle
+
+> rake db:create
+
+> rake db:migrate
+
+> rake db:seed
 
 The seed file will create over 30,000 rows over 3 tables (States, Counties, Zips). This will take several minutes or more. Puts statements in the seed will give you feedback as to the seed's success including statements on the successful creation of each state, and total number of each entity created - 51 states(DC included), 27,000 + zip codes, 2800 + counties.
 
