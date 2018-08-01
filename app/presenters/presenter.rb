@@ -19,13 +19,15 @@ class Presenter
               :low_incomes,
               :premature_deaths,
               :low_birth_weights,
-              :diabetes_prevalences
+              :diabetes_prevalences,
+              :highest_pops
 
   def set_user(current_user)
     page_user = current_user || User.new
     @user = UserDecorator.new(page_user)
     @high_incomes = []
     @low_incomes = []
+    @highest_pops = []
     @premature_deaths = RankingCardPresenter.new("", "")
     @low_birth_weights = RankingCardPresenter.new("", "")
     @diabetes_prevalences = RankingCardPresenter.new("", "")

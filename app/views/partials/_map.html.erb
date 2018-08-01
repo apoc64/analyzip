@@ -15,6 +15,7 @@
   var prematureDeath = [];
   var lowBirthWeight = [];
   var diabetesPrevalence = [];
+  var highPopulations = [];
 
   <% @presenter.high_incomes.each do |zip| %>
     highIncomes.push("<%= zip.code %>")
@@ -30,6 +31,9 @@
   <% end %>
   <% @presenter.diabetes_prevalences.collection.each do |zip| %>
     diabetesPrevalence.push("<%= zip.code %>")
+  <% end %>
+  <% @presenter.highest_pops.each do |zip| %>
+    highPopulations.push("<%= zip.code %>")
   <% end %>
 </script>
 
