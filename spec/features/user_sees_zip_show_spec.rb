@@ -27,24 +27,4 @@ describe 'user visits zip show page' do
 
     expect(current_path).to eq('/Login')
   end
-
-  it 'lets a logged in user favorite a zip code' do
-    zip = create(:zip)
-    user = User.create(first_name: 'bob', last_name: 'bobber', email: 'bob@bob.bob')
-
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    allow_any_instance_of(Google).to receive(:center).and_return({"lat" => 0, "lng" => 0})
-    allow_any_instance_of(Google).to receive(:bounds).and_return({"northeast" => {"lat" => 0, "lng" => 0}, "southwest" => {"lat" => 0, "lng" => 0}})
-
-    visit zip_path(zip)
-
-    expect(page).to_not have_link("Login or Sign Up to add this zip to my favorites")
-    fill_in 'user_zip[comment]', with: 'I like this zip'
-
-    click_on "Add to my favorites"
-    visit user_path(user)
-
-    expect(page).to have_link(zip.code)
-    expect(page).to have_content('I like this zip')
-  end
 end
