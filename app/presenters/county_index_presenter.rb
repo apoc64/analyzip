@@ -1,5 +1,4 @@
 class CountyIndexPresenter < Presenter
-  # include Presenter
 
   attr_reader :premature_death,
               :low_birth_weight,
