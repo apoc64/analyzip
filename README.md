@@ -40,7 +40,7 @@ To run the test suite, run
 
 ## Data Sources
 https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-statistics-zip-code-data-soi
-The app currently uses 2015 data. Once newer data becomes available, the csv may be changeds out and and column names adjusted appropriatetely through database migration .
+The app currently uses FY2015 data. Once newer data becomes available, the csv may be changed out and and column names adjusted appropriatetely through database migration.
 
 http://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation
 The County Health Rankings data lists 2018 as its publication date. 
