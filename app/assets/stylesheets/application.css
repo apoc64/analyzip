@@ -60,16 +60,13 @@ h3, h5 {
   width: 50px;
   padding: 0px;
   margin-left: 0px;
-  /* margin-right: auto; */
   float: left;
 }
 .google-button-text {
   font-family: 'Roboto';
-  /* font-style: medium; */
   color: white;
   padding: 10pt;
   font-size: 14pt;
-  /* margin-bottom: 8px; */
   text-align: center;
   float: right;
 }
@@ -87,6 +84,3 @@ footer p {
     padding-top: 6px;
   }
 }
-
-/* 1225-600 */
-/* card media query at 800px */
