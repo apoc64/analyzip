@@ -9,7 +9,7 @@ Ruby 2.4.1
 
 ES6
 
-Google Maps
+Google Maps, Geocoder, OAuth
 
 ## Getting Started
 Clone this repo. It contains large .csv files which may require additional time.
@@ -28,7 +28,15 @@ This app uses Rails 5.2 credentials. You will need a Google API key for Maps, an
 
 ```EDITOR="atom --wait" rails credentials:edit```
 
-or change appropriately depending on your text editor
+or change appropriately depending on your text editor, and enter keys in the following format:
+```
+google:
+  api_key: XXXXXXX
+  client_id: XXXXXXX
+  client_secret: XXXXXXXX
+  test_token: XXXXXXX
+```
+Test token is a token received from Google, used in tests.
 
 To run this project locally on localhost:3000, run
 ```rails s```
