@@ -9,32 +9,32 @@
 
 
 <% if @presenter.favorite.persisted? %>
-<script>
-  var shouldDelete = true
-  const deleteButton = document.querySelector('#delete-button')
-  deleteButton.style.visibility = "hidden"
-  const favSubmit = document.querySelector('#fav_submit')
+  <script>
+    var shouldDelete = true
+    const deleteButton = document.querySelector('#delete-button')
+    deleteButton.style.visibility = "hidden"
+    const favSubmit = document.querySelector('#fav_submit')
 
-  function submitClick() {
-    if(shouldDelete) {
-      event.preventDefault()
-      deleteButton.click()
+    function submitClick() {
+      if(shouldDelete) {
+        event.preventDefault()
+        deleteButton.click()
+      }
     }
-  }
 
-  function deleteClick() {
-    console.log("delete")
-  }
+    function deleteClick() {
+      console.log("delete")
+    }
 
-  function changeSubmit() {
-    favSubmit.value = "Update comment"
-    shouldDelete = false
-  }
+    function changeSubmit() {
+      favSubmit.value = "Update comment"
+      shouldDelete = false
+    }
 
-</script>
+  </script>
 <% else %>
-<script>
-  const deleteButton = document.querySelector('#delete-button')
-  deleteButton.style.visibility = "hidden"
-</script>
+  <script>
+    const deleteButton = document.querySelector('#delete-button')
+    deleteButton.style.visibility = "hidden"
+  </script>
 <% end %>
