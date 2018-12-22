@@ -5,8 +5,8 @@ class UserZipsController < ApplicationController
   end
 
   def update
-    uz = current_user.user_zips.find(params[:id])
-    uz.update(uz_params)
+    user_zip = current_user.user_zips.find(params[:id])
+    user_zip.update(uz_params)
     redirect_to user_path(current_user)
   end
 
