@@ -13,4 +13,10 @@ class RankingCardPresenter
     @collection = source
     self
   end
+
+  def each(*)
+    @collection.each do |object|
+      yield(object)
+    end
+  end
 end

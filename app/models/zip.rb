@@ -34,4 +34,8 @@ class Zip < ApplicationRecord
   def mean_income
     ((a00100.to_f / n1.to_f) * 1000).to_i
   end
+
+  def self.highest_incomes
+    Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS raw_value').order('raw_value DESC').limit(10)
+  end
 end
