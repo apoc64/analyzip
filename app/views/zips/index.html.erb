@@ -1,18 +1,9 @@
 <h3 class="center base-card">Zip Codes</h3>
 
 <div class="row">
-    <%= render partial: "partials/ranking_card", locals: { data: @presenter.high_incomes } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.high_incomes } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.low_incomes } %>
 
-  <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable low-incomes">
-      <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
-      <ol>
-        <% @presenter.low_incomes.each do |zip| %>
-        <li><%= link_to zip.code, zip_path(zip) %>: <span class="right"><%= number_to_currency(zip.mean_income, precision: 0) %></span></li>
-        <% end %>
-      </ol>
-    </div>
-  </div>
   <div class="col s12 m4">
     <div class="card-panel grey lighten-5 hoverable high-populations">
       <h5 class="center teal-text text-darken-4">Highest Pops:</h5>
