@@ -40,6 +40,10 @@ class State < ApplicationRecord
     zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)
   end
 
+  def self.highest_incomes
+    State.select('states.id, states.abbreviation, states.name, states.a00100, states.n1, (states.a00100::float / states.n1::float) AS raw_value').order('raw_value DESC').limit(10)
+  end
+
   # for income card polymorphism
   def code
     name
