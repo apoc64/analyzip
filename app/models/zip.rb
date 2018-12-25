@@ -42,4 +42,8 @@ class Zip < ApplicationRecord
   def self.lowest_incomes
     Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS raw_value').order('raw_value ASC').limit(10)
   end
+
+  def self.highest_pops
+    Zip.select('id, n1 AS raw_value').order('raw_value DESC').limit(10)
+  end
 end

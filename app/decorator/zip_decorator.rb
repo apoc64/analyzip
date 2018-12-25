@@ -14,6 +14,10 @@ class ZipDecorator < SimpleDelegator
     @value = number_to_currency(raw_value * 1000)
   end
 
+  def set_delimiter
+    @value = number_with_delimiter(raw_value)
+  end
+
   def value
     @value || raw_value
   end
