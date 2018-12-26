@@ -7,10 +7,25 @@ class ZipsIndexPresenter < Presenter
     set_user(current_user)
     set_default_map
 
-    # move to model class methods
-    @high_incomes = Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income DESC').limit(10)
-    @low_incomes = Zip.select('zips.id, zips.a00100, zips.n1, (zips.a00100 / zips.n1) AS income').order('income ASC').limit(10)
-    @highest_pops = Zip.select('id, n1').order('n1 DESC').limit(10)
+    @high_incomes = find_high_incomes
+    @low_incomes = find_low_incomes
+    @highest_pops = find_high_pops
   end
 
+  private
+
+  def find_high_incomes
+    rcp = RankingCardPresenter.new("Highest Incomes", "high-incomes")
+    set_currency_collection(rcp, Zip.highest_incomes, ZipDecorator)
+  end
+
+  def find_low_incomes
+    rcp = RankingCardPresenter.new("Lowest Incomes", "low-incomes")
+    set_currency_collection(rcp, Zip.lowest_incomes, ZipDecorator)
+  end
+
+  def find_high_pops
+    rcp = RankingCardPresenter.new("Highest Pops", "highest-pops")
+    set_delimiter_collection(rcp, Zip.highest_pops, ZipDecorator)
+  end
 end

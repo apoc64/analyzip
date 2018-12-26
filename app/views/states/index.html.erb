@@ -1,36 +1,9 @@
 <h3 class="center base-card">States</h3>
 
 <div class="row">
-  <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable high-incomes">
-      <h5 class="center teal-text text-darken-4">Highest Incomes:</h5>
-      <ol>
-        <% @presenter.high_incomes.each do |state| %>
-        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_to_currency(state.mean_income, precision: 0) %></span></li>
-        <% end %>
-      </ol>
-    </div>
-  </div>
-  <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable low-incomes">
-      <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
-      <ol>
-        <% @presenter.low_incomes.each do |state| %>
-        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_to_currency(state.mean_income, precision: 0) %></span></li>
-        <% end %>
-      </ol>
-    </div>
-  </div>
-  <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable high-populations">
-      <h5 class="center teal-text text-darken-4">Highest Pops:</h5>
-      <ol>
-        <% @presenter.highest_pops.each do |state| %>
-        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_with_delimiter(state.n1) %></span></li>
-        <% end %>
-      </ol>
-    </div>
-  </div>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.high_incomes } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.low_incomes } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.highest_pops } %>
 </div>
 
 <div id="map-info"></div>

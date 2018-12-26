@@ -28,9 +28,9 @@ class Presenter
     @high_incomes = []
     @low_incomes = []
     @highest_pops = []
-    @premature_deaths = RankingCardPresenter.new("", "")
-    @low_birth_weights = RankingCardPresenter.new("", "")
-    @diabetes_prevalences = RankingCardPresenter.new("", "")
+    @premature_deaths = []
+    @low_birth_weights = []
+    @diabetes_prevalences = []
   end
 
   def set_default_map
@@ -41,7 +41,7 @@ class Presenter
     @sw_lat = 30
     @sw_lng = -120
     @name = "United States"
-    @map_name = "united%states"
+    @map_name = "United States"
   end
 
   def page_title
@@ -50,5 +50,41 @@ class Presenter
 
   def page_description
     "Analyze socio-economic, health, tax and other data with maps for zip codes, states and other geographic entities."
+  end
+
+  def set_percent_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_percent
+      decorator
+    end
+    rcp.set_collection(items)
+  end
+
+  def set_rounded_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_rounded
+      decorator
+    end
+    rcp.set_collection(items)
+  end
+
+  def set_currency_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_currency
+      decorator
+    end
+    rcp.set_collection(items)
+  end
+
+  def set_delimiter_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_delimiter
+      decorator
+    end
+    rcp.set_collection(items)
   end
 end

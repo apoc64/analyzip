@@ -23,13 +23,13 @@
   <% @presenter.low_incomes.each do |zip| %>
     lowIncomes.push("<%= zip.code %>")
   <% end %>
-  <% @presenter.premature_deaths.collection.each do |zip| %>
+  <% @presenter.premature_deaths.each do |zip| %>
     prematureDeath.push("<%= zip.code %>")
   <% end %>
-  <% @presenter.low_birth_weights.collection.each do |zip| %>
+  <% @presenter.low_birth_weights.each do |zip| %>
     lowBirthWeight.push("<%= zip.code %>")
   <% end %>
-  <% @presenter.diabetes_prevalences.collection.each do |zip| %>
+  <% @presenter.diabetes_prevalences.each do |zip| %>
     diabetesPrevalence.push("<%= zip.code %>")
   <% end %>
   <% @presenter.highest_pops.each do |zip| %>
