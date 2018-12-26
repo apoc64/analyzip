@@ -45,5 +45,17 @@ FactoryBot.define do
       elderly {750}
       a00100 {5000000}
     end
+
+    factory :zip_odd_numbers do
+      state
+      n1 {5175}
+      mars1 {2132}
+      mars2 {2515}
+      mars4 {1775}
+      prep {752}
+      numdep {3148}
+      elderly {759}
+      a00100 {5214698}
+    end
   end
 end

@@ -2,17 +2,9 @@
 
 <div class="row">
   <%= render partial: "partials/ranking_card", locals: { data: @presenter.high_incomes } %>
+  <%= render partial: "partials/ranking_card", locals: { data: @presenter.low_incomes } %>
 
-  <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable low-incomes">
-      <h5 class="center teal-text text-darken-4">Lowest Incomes:</h5>
-      <ol>
-        <% @presenter.low_incomes.each do |state| %>
-        <li><%= link_to state.name, state_path(state) %>: <span class="right"><%= number_to_currency(state.mean_income, precision: 0) %></span></li>
-        <% end %>
-      </ol>
-    </div>
-  </div>
+
   <div class="col s12 m4">
     <div class="card-panel grey lighten-5 hoverable high-populations">
       <h5 class="center teal-text text-darken-4">Highest Pops:</h5>

@@ -9,8 +9,8 @@ class StateIndexPresenter < Presenter
     # move to model class methods, SQL floats/tests
     set_user(current_user)
     @high_incomes = find_high_incomes
+    @low_incomes = find_low_incomes
 
-    @low_incomes = State.select('states.id, states.name, states.abbreviation, states.a00100, states.n1, (states.a00100 / states.n1) AS income').order('income ASC').limit(10)
     @highest_pops = State.select('id, name, abbreviation, n1').order('n1 DESC').limit(10)
     @states = State.select('id, name, abbreviation')
 
@@ -26,5 +26,10 @@ class StateIndexPresenter < Presenter
   def find_high_incomes
     rcp = RankingCardPresenter.new("Highest Incomes", "high-incomes")
     set_currency_collection(rcp, State.highest_incomes, StateDecorator)
+  end
+
+  def find_low_incomes
+    rcp = RankingCardPresenter.new("Lowest Incomes", "low-incomes")
+    set_currency_collection(rcp, State.lowest_incomes, StateDecorator)
   end
 end
