@@ -16,30 +16,16 @@ class ZipsIndexPresenter < Presenter
 
   def find_high_incomes
     rcp = RankingCardPresenter.new("Highest Incomes", "high-incomes")
-    set_currency_collection(rcp, Zip.highest_incomes)
+    set_currency_collection(rcp, Zip.highest_incomes, ZipDecorator)
   end
 
   def find_low_incomes
     rcp = RankingCardPresenter.new("Lowest Incomes", "low-incomes")
-    set_currency_collection(rcp, Zip.lowest_incomes)
+    set_currency_collection(rcp, Zip.lowest_incomes, ZipDecorator)
   end
 
   def find_high_pops
     rcp = RankingCardPresenter.new("Highest Pops", "highest-pops")
-    zips = Zip.highest_pops.map do |zip|
-      zd = ZipDecorator.new(zip)
-      zd.set_delimiter
-      zd
-    end
-    rcp.set_collection(zips)
-  end
-
-  def set_currency_collection(rcp, collection)
-    zips = collection.map do |zip|
-      zd = ZipDecorator.new(zip)
-      zd.set_currency
-      zd
-    end
-    rcp.set_collection(zips)
+    set_delimiter_collection(rcp, Zip.highest_pops, ZipDecorator)
   end
 end

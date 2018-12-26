@@ -51,4 +51,40 @@ class Presenter
   def page_description
     "Analyze socio-economic, health, tax and other data with maps for zip codes, states and other geographic entities."
   end
+
+  def set_percent_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_percent
+      decorator
+    end
+    rcp.set_collection(items)
+  end
+
+  def set_rounded_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_rounded
+      decorator
+    end
+    rcp.set_collection(items)
+  end
+
+  def set_currency_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_currency
+      decorator
+    end
+    rcp.set_collection(items)
+  end
+
+  def set_delimiter_collection(rcp, collection, decorator_class)
+    items = collection.map do |item|
+      decorator = decorator_class.new(item)
+      decorator.set_delimiter
+      decorator
+    end
+    rcp.set_collection(items)
+  end
 end
