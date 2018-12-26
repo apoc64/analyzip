@@ -10,8 +10,7 @@ class StateIndexPresenter < Presenter
     set_user(current_user)
     @high_incomes = find_high_incomes
     @low_incomes = find_low_incomes
-
-    @highest_pops = State.select('id, name, abbreviation, n1').order('n1 DESC').limit(10)
+    @highest_pops = find_high_pops
     @states = State.select('id, name, abbreviation')
 
     set_default_map
@@ -31,5 +30,10 @@ class StateIndexPresenter < Presenter
   def find_low_incomes
     rcp = RankingCardPresenter.new("Lowest Incomes", "low-incomes")
     set_currency_collection(rcp, State.lowest_incomes, StateDecorator)
+  end
+
+  def find_high_pops
+    rcp = RankingCardPresenter.new("Highest Pops", "high-populations")
+    set_delimiter_collection(rcp, State.highest_pops, StateDecorator)
   end
 end
