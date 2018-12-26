@@ -9,8 +9,6 @@ class StatePresenter < Presenter
   def_delegator :@state, :percent_elderly
   def_delegator :@state, :mean_income
   def_delegator :@state, :zips
-  # def_delegator :@state, :high_incomes
-  # def_delegator :@state, :low_incomes
   def_delegator :@state, :counties
 
   def initialize(state_id, current_user)

@@ -28,9 +28,9 @@ class Presenter
     @high_incomes = []
     @low_incomes = []
     @highest_pops = []
-    @premature_deaths = RankingCardPresenter.new("", "")
-    @low_birth_weights = RankingCardPresenter.new("", "")
-    @diabetes_prevalences = RankingCardPresenter.new("", "")
+    @premature_deaths = []
+    @low_birth_weights = []
+    @diabetes_prevalences = []
   end
 
   def set_default_map
@@ -41,7 +41,7 @@ class Presenter
     @sw_lat = 30
     @sw_lng = -120
     @name = "United States"
-    @map_name = "united%states"
+    @map_name = "United States"
   end
 
   def page_title

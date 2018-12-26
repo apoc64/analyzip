@@ -133,7 +133,7 @@ if(!(diabetesPrevalence === undefined || diabetesPrevalence.length == 0)) {
 if(!(highPopulations === undefined || highPopulations.length == 0)) {
   const highPopulationsCard = document.querySelector('.highest-pops');
   highPopulationsCard.addEventListener('click', function() {
-    placeMarkers(highPopulations, `Highest population ${geoUnit}`)
+    placeMarkers(highPopulations, `Highest population`)
   })
 }
 

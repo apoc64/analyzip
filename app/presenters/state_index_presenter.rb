@@ -33,7 +33,7 @@ class StateIndexPresenter < Presenter
   end
 
   def find_high_pops
-    rcp = RankingCardPresenter.new("Highest Pops", "high-populations")
+    rcp = RankingCardPresenter.new("Highest Pops", "highest-pops")
     set_delimiter_collection(rcp, State.highest_pops, StateDecorator)
   end
 end

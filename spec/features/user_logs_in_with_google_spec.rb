@@ -5,9 +5,9 @@ def stub_omniauth
   OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
       provider: 'google',
       info: {
-        first_name: 'Steve',
-        last_name: 'Schwedt',
-        email: 'sschwedt@gmail.com'
+        first_name: 'Bob',
+        last_name: 'Bobber',
+        email: 'bob@bob.bob'
       },
       credentials: {
       token: Rails.application.credentials.google[:test_token]
@@ -25,7 +25,10 @@ describe 'user visits home page' do
 
     click_on 'Sign in with Google'
 
-    expect(page).to have_content('Welcome, Steve')
+    user = User.last
+    expect(current_path).to eq(user_path(user))
+    expect(user.last_name).to eq("Bobber")
+    expect(page).to have_content('Welcome, Bob')
     expect(page).to have_link('Logout')
     expect(page).to_not have_link('Login')
 
