@@ -17,23 +17,23 @@ class StateIndexPresenter < Presenter
   end
 
   def page_title
-    "All States - AnalyZip"
+    'All States - AnalyZip'
   end
 
   private
 
   def find_high_incomes
-    rcp = RankingCardPresenter.new("Highest Incomes", "high-incomes")
+    rcp = RankingCardPresenter.new('Highest Incomes', 'high-incomes')
     set_currency_collection(rcp, State.highest_incomes, StateDecorator)
   end
 
   def find_low_incomes
-    rcp = RankingCardPresenter.new("Lowest Incomes", "low-incomes")
+    rcp = RankingCardPresenter.new('Lowest Incomes', 'low-incomes')
     set_currency_collection(rcp, State.lowest_incomes, StateDecorator)
   end
 
   def find_high_pops
-    rcp = RankingCardPresenter.new("Highest Pops", "highest-pops")
+    rcp = RankingCardPresenter.new('Highest Pops', 'highest-pops')
     set_delimiter_collection(rcp, State.highest_pops, StateDecorator)
   end
 end

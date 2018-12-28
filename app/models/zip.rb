@@ -4,7 +4,7 @@ class Zip < ApplicationRecord
   belongs_to :state
 
   def code
-    "%05d" % id
+    '%05d' % id
   end
 
   def percent_single

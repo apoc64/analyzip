@@ -14,8 +14,8 @@
       <p>Avg Income: <span class="right"><%= number_to_currency(@presenter.mean_income, precision: 0) %></span></p>
     </div>
   </div>
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.high_incomes } %>
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.low_incomes } %>
+  <%= render partial: 'partials/ranking_card', locals: { data: @presenter.high_incomes } %>
+  <%= render partial: 'partials/ranking_card', locals: { data: @presenter.low_incomes } %>
 
 </div>
 
@@ -32,4 +32,4 @@
   <%= link_to county.name, county_path(county) %>
 <% end %>
 
-<%= render partial: "partials/map" %>
+<%= render partial: 'partials/map' %>

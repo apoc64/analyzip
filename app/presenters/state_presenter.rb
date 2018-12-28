@@ -17,13 +17,13 @@ class StatePresenter < Presenter
 
     google = Google.new(name)
     coords = google.center
-    @lat = coords["lat"]
-    @lng = coords["lng"]
+    @lat = coords['lat']
+    @lng = coords['lng']
     bounds = google.bounds
-    @ne_lat = bounds["northeast"]["lat"]
-    @ne_lng = bounds["northeast"]["lng"]
-    @sw_lat = bounds["southwest"]["lat"]
-    @sw_lng = bounds["southwest"]["lng"]
+    @ne_lat = bounds['northeast']['lat']
+    @ne_lng = bounds['northeast']['lng']
+    @sw_lat = bounds['southwest']['lat']
+    @sw_lng = bounds['southwest']['lng']
 
     @high_incomes = find_high_incomes
     @low_incomes = find_low_incomes
@@ -40,12 +40,12 @@ class StatePresenter < Presenter
   private
 
   def find_high_incomes
-    rcp = RankingCardPresenter.new("Highest Incomes", "high-incomes")
+    rcp = RankingCardPresenter.new('Highest Incomes', 'high-incomes')
     set_currency_collection(rcp, @state.high_incomes, ZipDecorator)
   end
 
   def find_low_incomes
-    rcp = RankingCardPresenter.new("Lowest Incomes", "low-incomes")
+    rcp = RankingCardPresenter.new('Lowest Incomes', 'low-incomes')
     set_currency_collection(rcp, @state.low_incomes, ZipDecorator)
   end
 end

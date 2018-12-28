@@ -46,12 +46,12 @@ class CountyPresenter < Presenter
   def set_lat_lng(google)
     coords = google.center
     return nil unless coords
-    @lat = coords["lat"]
-    @lng = coords["lng"]
+    @lat = coords['lat']
+    @lng = coords['lng']
     bounds = google.bounds
-    @ne_lat = bounds["northeast"]["lat"]
-    @ne_lng = bounds["northeast"]["lng"]
-    @sw_lat = bounds["southwest"]["lat"]
-    @sw_lng = bounds["southwest"]["lng"]
+    @ne_lat = bounds['northeast']['lat']
+    @ne_lng = bounds['northeast']['lng']
+    @sw_lat = bounds['southwest']['lat']
+    @sw_lng = bounds['southwest']['lng']
   end
 end

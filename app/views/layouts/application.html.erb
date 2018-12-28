@@ -28,16 +28,16 @@
     <nav class="teal darken-4">
       <div class="container">
         <div class="nav-wrapper">
-          <%= link_to image_tag("AnalyZip.svg", alt: "AnalyZip", width: 145, class: "az-logo"), root_path, class: "brand-logo" %>
+          <%= link_to image_tag('AnalyZip.svg', alt: 'AnalyZip', width: 145, class: 'az-logo'), root_path, class: 'brand-logo' %>
           <a href="#" data-target="mobile-nav" class="sidenav-trigger">
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
             <li><%= link_to @presenter.user_action, @presenter.current_user_path %></li>
             <li><%= link_to @presenter.log_action, @presenter.log_path %></li>
-            <li><%= link_to "States", states_path %></li>
-            <li><%= link_to "Counties", counties_path %></li>
-            <li><%= link_to "Zip Codes", zips_path %></li>
+            <li><%= link_to 'States', states_path %></li>
+            <li><%= link_to 'Counties', counties_path %></li>
+            <li><%= link_to 'Zip Codes', zips_path %></li>
           </ul>
         </div>
       </div>
@@ -46,9 +46,9 @@
   <ul class="sidenav" id="mobile-nav">
     <li><%= link_to @presenter.user_action, @presenter.current_user_path %></li>
     <li><%= link_to @presenter.log_action, @presenter.log_path %></li>
-    <li><%= link_to "States", states_path %></li>
-    <li><%= link_to "Counties", counties_path %></li>
-    <li><%= link_to "Zip Codes", zips_path %></li>
+    <li><%= link_to 'States', states_path %></li>
+    <li><%= link_to 'Counties', counties_path %></li>
+    <li><%= link_to 'Zip Codes', zips_path %></li>
   </ul>
 
   <div class="container">

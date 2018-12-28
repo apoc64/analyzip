@@ -17,17 +17,17 @@ class CountyIndexPresenter < Presenter
   private
 
   def find_premature_deaths
-    rcp = RankingCardPresenter.new("Most Premature Death", "premature-death")
+    rcp = RankingCardPresenter.new('Most Premature Death', 'premature-death')
     set_rounded_collection(rcp, County.premature_death, CountyDecorator)
   end
 
   def find_low_birth_weight
-    rcp = RankingCardPresenter.new("Most Low Birth Weight", "low-birth-weight")
+    rcp = RankingCardPresenter.new('Most Low Birth Weight', 'low-birth-weight')
     set_percent_collection(rcp, County.low_birth_weight, CountyDecorator)
   end
 
   def find_diabetes
-    rcp = RankingCardPresenter.new("Most Diabetes", "diabetes")
+    rcp = RankingCardPresenter.new('Most Diabetes', 'diabetes')
     set_percent_collection(rcp, County.diabetes, CountyDecorator)
   end
 end

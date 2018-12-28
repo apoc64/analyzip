@@ -30,10 +30,10 @@ class ZipPresenter < Presenter
 
   def favorite
     if @user.user_zips.exists?(zip_id: zip.id)
-      @fav_submit_message = "Remove from my favorites"
+      @fav_submit_message = 'Remove from my favorites'
       @user.user_zips.find_by(zip_id: zip.id)
     else
-      @fav_submit_message = "Add to my favorites"
+      @fav_submit_message = 'Add to my favorites'
       @user.user_zips.new
     end
   end
@@ -43,12 +43,12 @@ class ZipPresenter < Presenter
   def set_lat_lng(google)
     coords = google.center
     return nil unless coords
-    @lat = coords["lat"]
-    @lng = coords["lng"]
+    @lat = coords['lat']
+    @lng = coords['lng']
     bounds = google.bounds
-    @ne_lat = bounds["northeast"]["lat"]
-    @ne_lng = bounds["northeast"]["lng"]
-    @sw_lat = bounds["southwest"]["lat"]
-    @sw_lng = bounds["southwest"]["lng"]
+    @ne_lat = bounds['northeast']['lat']
+    @ne_lng = bounds['northeast']['lng']
+    @sw_lat = bounds['southwest']['lat']
+    @sw_lng = bounds['southwest']['lng']
   end
 end

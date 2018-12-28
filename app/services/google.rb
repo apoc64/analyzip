@@ -5,19 +5,19 @@ class Google
 
   def center
     return nil if invalid
-    response["results"][0]["geometry"]["location"]
+    response['results'][0]['geometry']['location']
   end
 
   def bounds
     return failure_response if invalid
-    response["results"][0]["geometry"]["bounds"]
+    response['results'][0]['geometry']['bounds']
   end
 
   def county
     return failure_response if invalid
-    response["results"][0]["address_components"].find do |component|
-      component["types"].include?("administrative_area_level_2")
-    end["short_name"]
+    response['results'][0]['address_components'].find do |component|
+      component['types'].include?('administrative_area_level_2')
+    end['short_name']
   end
 
   private
@@ -34,12 +34,12 @@ class Google
   end
 
   def invalid
-    response["status"] == "ZERO_RESULTS"
+    response["status"] == 'ZERO_RESULTS'
   end
 
   def validate_location(location)
-    if location == "New York"
-      location = "New York State"
+    if location == 'New York'
+      location = 'New York State'
     end
     return location
   end

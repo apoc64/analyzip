@@ -4,9 +4,9 @@ class UserDecorator < SimpleDelegator
 
   def log_action
     if persisted?
-      "Logout"
+      'Logout'
     else
-      "Login"
+      'Login'
     end
   end
 
@@ -16,9 +16,9 @@ class UserDecorator < SimpleDelegator
 
   def user_action
     if persisted?
-      "Profile"
+      'Profile'
     else
-      "Sign Up"
+      'Sign Up'
     end
   end
 
@@ -26,15 +26,15 @@ class UserDecorator < SimpleDelegator
     if persisted?
       "/users/#{id}"
     else
-      "/Login"
+      '/Login'
     end
   end
 
   def fav_partial
     if persisted?
-      "fav_add"
+      'fav_add'
     else
-      "fav_login"
+      'fav_login'
     end
   end
 end

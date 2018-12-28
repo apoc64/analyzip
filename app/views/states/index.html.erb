@@ -1,9 +1,9 @@
 <h3 class="center base-card">States</h3>
 
 <div class="row">
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.high_incomes } %>
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.low_incomes } %>
-  <%= render partial: "partials/ranking_card", locals: { data: @presenter.highest_pops } %>
+  <%= render partial: 'partials/ranking_card', locals: { data: @presenter.high_incomes } %>
+  <%= render partial: 'partials/ranking_card', locals: { data: @presenter.low_incomes } %>
+  <%= render partial: 'partials/ranking_card', locals: { data: @presenter.highest_pops } %>
 </div>
 
 <div id="map-info"></div>
@@ -16,4 +16,4 @@
 <% end %>
 </div>
 
-<%= render partial: "partials/map" %>
+<%= render partial: 'partials/map' %>

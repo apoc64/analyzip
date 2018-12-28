@@ -40,16 +40,16 @@ class Presenter
     @ne_lng = -70
     @sw_lat = 30
     @sw_lng = -120
-    @name = "United States"
-    @map_name = "United States"
+    @name = 'United States'
+    @map_name = 'United States'
   end
 
   def page_title
-    "AnalyZip"
+    'AnalyZip'
   end
 
   def page_description
-    "Analyze socio-economic, health, tax and other data with maps for zip codes, states and other geographic entities."
+    'Analyze socio-economic, health, tax and other data with maps for zip codes, states and other geographic entities.'
   end
 
   def set_percent_collection(rcp, collection, decorator_class)
