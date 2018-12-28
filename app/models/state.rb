@@ -1,35 +1,8 @@
 class State < ApplicationRecord
+  include IrsModelMethods
   validates_presence_of :abbreviation
   has_many :zips
   has_many :counties
-
-  def single
-    (mars1.to_f / n1.to_f)
-  end
-
-  def joint
-    (mars2.to_f / n1.to_f)
-  end
-
-  def hoh
-    (mars4.to_f / n1.to_f)
-  end
-
-  def paid_prep
-    (prep.to_f / n1.to_f)
-  end
-
-  def average_dependents
-    (numdep.to_f / n1.to_f)
-  end
-
-  def elderly_portion
-    (elderly.to_f / n1.to_f)
-  end
-
-  def mean_income
-    ((a00100.to_f / n1.to_f) * 1000)
-  end
 
   def high_incomes
     zips.select('zips.id, zips.a00100, zips.n1, (zips.a00100::float / zips.n1::float) AS raw_value').order('raw_value DESC').limit(10)
