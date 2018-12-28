@@ -1,5 +1,6 @@
 class State < ApplicationRecord
   include IrsModelMethods
+
   validates_presence_of :abbreviation
   has_many :zips
   has_many :counties

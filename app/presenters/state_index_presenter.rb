@@ -6,7 +6,6 @@ class StateIndexPresenter < Presenter
               :name
 
   def initialize(current_user)
-    # move to model class methods, SQL floats/tests
     set_user(current_user)
     @high_incomes = find_high_incomes
     @low_incomes = find_low_incomes

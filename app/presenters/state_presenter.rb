@@ -12,6 +12,8 @@ class StatePresenter < Presenter
     set_user(current_user)
 
     @basic_irs_card = irs_card_presenter
+    @high_incomes = find_high_incomes
+    @low_incomes = find_low_incomes
 
     google = Google.new(name)
     coords = google.center
@@ -22,18 +24,11 @@ class StatePresenter < Presenter
     @ne_lng = bounds['northeast']['lng']
     @sw_lat = bounds['southwest']['lat']
     @sw_lng = bounds['southwest']['lng']
-
-    @high_incomes = find_high_incomes
-    @low_incomes = find_low_incomes
   end
 
   def name
     @state.name || @state.abbreviation
   end
-
-  # def average_dependents
-  #   @state.average_dependents.round(2)
-  # end
 
   private
 
