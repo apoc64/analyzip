@@ -1,4 +1,4 @@
-class RankingCardPresenter
+class CardPresenter
   attr_reader :css_name,
               :title,
               :collection

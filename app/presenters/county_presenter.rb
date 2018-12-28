@@ -36,7 +36,7 @@ class CountyPresenter < Presenter
   private
 
   def set_health_card_data
-    cp = RankingCardPresenter.new('Basic Health Data')
+    cp = CardPresenter.new('Basic Health Data')
     cp.set_collection(basic_health_data)
   end
 

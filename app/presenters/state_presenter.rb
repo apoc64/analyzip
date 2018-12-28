@@ -40,12 +40,12 @@ class StatePresenter < Presenter
   private
 
   def find_high_incomes
-    rcp = RankingCardPresenter.new('Highest Incomes', 'high-incomes')
-    set_currency_collection(rcp, @state.high_incomes, ZipDecorator)
+    cp = CardPresenter.new('Highest Incomes', 'high-incomes')
+    set_currency_collection(cp, @state.high_incomes, ZipDecorator)
   end
 
   def find_low_incomes
-    rcp = RankingCardPresenter.new('Lowest Incomes', 'low-incomes')
-    set_currency_collection(rcp, @state.low_incomes, ZipDecorator)
+    cp = CardPresenter.new('Lowest Incomes', 'low-incomes')
+    set_currency_collection(cp, @state.low_incomes, ZipDecorator)
   end
 end
