@@ -1,19 +1,17 @@
 class StatePresenter < Presenter
   extend Forwardable
   def_delegator :@state, :abbreviation
-  def_delegator :@state, :n1
-  def_delegator :@state, :percent_single
-  def_delegator :@state, :percent_joint
-  def_delegator :@state, :percent_hoh
-  def_delegator :@state, :percent_paid_prep
-  def_delegator :@state, :percent_elderly
-  def_delegator :@state, :mean_income
+
   def_delegator :@state, :zips
   def_delegator :@state, :counties
+
+  attr_reader :basic_irs_card
 
   def initialize(state_id, current_user)
     @state = State.find(state_id)
     set_user(current_user)
+
+    @basic_irs_card = irs_card_presenter
 
     google = Google.new(name)
     coords = google.center
@@ -33,9 +31,9 @@ class StatePresenter < Presenter
     @state.name || @state.abbreviation
   end
 
-  def average_dependents
-    @state.average_dependents.round(2)
-  end
+  # def average_dependents
+  #   @state.average_dependents.round(2)
+  # end
 
   private
 
@@ -47,5 +45,23 @@ class StatePresenter < Presenter
   def find_low_incomes
     cp = CardPresenter.new('Lowest Incomes', 'low-incomes')
     set_currency_collection(cp, @state.low_incomes, ZipDecorator)
+  end
+
+  def irs_card_presenter
+    cp = CardPresenter.new('Basic IRS Data')
+    cp.set_collection(basic_irs_data)
+  end
+
+  def basic_irs_data
+    [
+      DetailCardItem.new('No. of Returns', @state.n1).delimiter,
+      DetailCardItem.new('Percent Single', @state.single).percent,
+      DetailCardItem.new('Percent Joint File', @state.joint).percent,
+      DetailCardItem.new('Percent HOH', @state.hoh).percent,
+      DetailCardItem.new('Percent Paid Prep', @state.paid_prep).percent,
+      DetailCardItem.new('Avg Dependents', @state.average_dependents).round(2),
+      DetailCardItem.new('Percent Elderly', @state.elderly_portion).percent,
+      DetailCardItem.new('Avg Income', @state.mean_income).currency
+    ]
   end
 end
