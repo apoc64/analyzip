@@ -1,9 +1,9 @@
-class RankingCardPresenter
+class CardPresenter
   attr_reader :css_name,
               :title,
               :collection
 
-  def initialize(title, css_name)
+  def initialize(title, css_name = 'base-card')
     @title = title
     @css_name = css_name
     @collection = []

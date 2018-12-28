@@ -6,7 +6,6 @@ class StateIndexPresenter < Presenter
               :name
 
   def initialize(current_user)
-    # move to model class methods, SQL floats/tests
     set_user(current_user)
     @high_incomes = find_high_incomes
     @low_incomes = find_low_incomes
@@ -23,17 +22,17 @@ class StateIndexPresenter < Presenter
   private
 
   def find_high_incomes
-    rcp = RankingCardPresenter.new('Highest Incomes', 'high-incomes')
-    set_currency_collection(rcp, State.highest_incomes, StateDecorator)
+    cp = CardPresenter.new('Highest Incomes', 'high-incomes')
+    set_currency_collection(cp, State.highest_incomes, StateDecorator)
   end
 
   def find_low_incomes
-    rcp = RankingCardPresenter.new('Lowest Incomes', 'low-incomes')
-    set_currency_collection(rcp, State.lowest_incomes, StateDecorator)
+    cp = CardPresenter.new('Lowest Incomes', 'low-incomes')
+    set_currency_collection(cp, State.lowest_incomes, StateDecorator)
   end
 
   def find_high_pops
-    rcp = RankingCardPresenter.new('Highest Pops', 'highest-pops')
-    set_delimiter_collection(rcp, State.highest_pops, StateDecorator)
+    cp = CardPresenter.new('Highest Pops', 'highest-pops')
+    set_delimiter_collection(cp, State.highest_pops, StateDecorator)
   end
 end

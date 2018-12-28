@@ -87,4 +87,17 @@ class Presenter
     end
     rcp.set_collection(items)
   end
+
+  def basic_irs_data(location)
+    [
+      DetailCardItem.new('No. of Returns', location.n1).delimiter,
+      DetailCardItem.new('Percent Single', location.single).percent,
+      DetailCardItem.new('Percent Joint File', location.joint).percent,
+      DetailCardItem.new('Percent HOH', location.hoh).percent,
+      DetailCardItem.new('Percent Paid Prep', location.paid_prep).percent,
+      DetailCardItem.new('Avg Dependents', location.average_dependents).round(2),
+      DetailCardItem.new('Percent Elderly', location.elderly_portion).percent,
+      DetailCardItem.new('Avg Income', location.mean_income).currency
+    ]
+  end
 end
