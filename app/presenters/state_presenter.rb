@@ -49,19 +49,7 @@ class StatePresenter < Presenter
 
   def irs_card_presenter
     cp = CardPresenter.new('Basic IRS Data')
-    cp.set_collection(basic_irs_data)
+    cp.set_collection(basic_irs_data(@state))
   end
 
-  def basic_irs_data
-    [
-      DetailCardItem.new('No. of Returns', @state.n1).delimiter,
-      DetailCardItem.new('Percent Single', @state.single).percent,
-      DetailCardItem.new('Percent Joint File', @state.joint).percent,
-      DetailCardItem.new('Percent HOH', @state.hoh).percent,
-      DetailCardItem.new('Percent Paid Prep', @state.paid_prep).percent,
-      DetailCardItem.new('Avg Dependents', @state.average_dependents).round(2),
-      DetailCardItem.new('Percent Elderly', @state.elderly_portion).percent,
-      DetailCardItem.new('Avg Income', @state.mean_income).currency
-    ]
-  end
 end

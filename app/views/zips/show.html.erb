@@ -4,19 +4,7 @@
 <%= render partial: "/partials/#{@presenter.fav_partial}" %>
 
 <div class="row">
-  <div class="col s12 m4">
-    <div class="card-panel grey lighten-5 hoverable base-card">
-      <h5 class="center teal-text text-darken-4">Basic IRS Data</h5>
-      <p>No. of Returns: <span class="right"><%= number_with_delimiter(@presenter.n1) %></p>
-      <p>Percent Single: <span class="right"><%= @presenter.percent_single %>%</span></p>
-      <p>Percent Joint File: <span class="right"><%= @presenter.percent_joint %>%</span></p>
-      <p>Percent HOH: <span class="right"><%= @presenter.percent_hoh %>%</span></p>
-      <p>Percent Paid Prep: <span class="right"><%= @presenter.percent_paid_prep %>%</span></p>
-      <p>Avg Dependents: <span class="right"><%= @presenter.average_dependents %></span></p>
-      <p>Percent Elderly: <span class="right"><%= @presenter.percent_elderly %>%</span></p>
-      <p>Avg Income: <span class="right"><%= number_to_currency(@presenter.mean_income, precision: 0) %></span></p>
-    </div>
-  </div>
+  <%= render partial: 'partials/detail_card', locals: { data: @presenter.basic_irs_card } %>
 </div>
 
 <div id="map-info"></div>
