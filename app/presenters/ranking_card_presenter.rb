@@ -3,7 +3,7 @@ class RankingCardPresenter
               :title,
               :collection
 
-  def initialize(title, css_name)
+  def initialize(title, css_name = 'base-card')
     @title = title
     @css_name = css_name
     @collection = []
