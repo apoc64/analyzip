@@ -1,6 +1,6 @@
 <div class="col s12 m4">
-  <div class="card-panel grey lighten-5 hoverable base-card">
-    <h5 class="center teal-text text-darken-4">Basic Health Data</h5>
+  <div class="card-panel grey lighten-5 hoverable <%= data.css_name %>">
+    <h5 class="center teal-text text-darken-4"><%= data.title %></h5>
     <% data.each do |item| %>
       <p><%= item.name %>: <span class="right"><%= item.value %></span></p>
     <% end %>
