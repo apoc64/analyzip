@@ -14,8 +14,7 @@ class CountyPresenter < Presenter
     @health_card = health_card_presenter
     @socio_economic_card = socio_economic_presenter
 
-    google = Google.new(google_map_name)
-    set_lat_lng(google)
+    set_location(google_map_name)
   end
 
   def map_name
@@ -62,17 +61,5 @@ class CountyPresenter < Presenter
       DetailCardItem.new('Segregation B/W', @county.measure_141_value),
       DetailCardItem.new('Segregation NW/W', @county.measure_142_value)
     ]
-  end
-
-  def set_lat_lng(google)
-    coords = google.center
-    return nil unless coords
-    @lat = coords['lat']
-    @lng = coords['lng']
-    bounds = google.bounds
-    @ne_lat = bounds['northeast']['lat']
-    @ne_lng = bounds['northeast']['lng']
-    @sw_lat = bounds['southwest']['lat']
-    @sw_lng = bounds['southwest']['lng']
   end
 end

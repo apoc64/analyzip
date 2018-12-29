@@ -14,16 +14,7 @@ class StatePresenter < Presenter
     @basic_irs_card = irs_card_presenter
     @high_incomes = find_high_incomes
     @low_incomes = find_low_incomes
-
-    google = Google.new(name)
-    coords = google.center
-    @lat = coords['lat']
-    @lng = coords['lng']
-    bounds = google.bounds
-    @ne_lat = bounds['northeast']['lat']
-    @ne_lng = bounds['northeast']['lng']
-    @sw_lat = bounds['southwest']['lat']
-    @sw_lng = bounds['southwest']['lng']
+    set_location(name)
   end
 
   def name

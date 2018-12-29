@@ -22,9 +22,25 @@ class Presenter
               :diabetes_prevalences,
               :highest_pops
 
+  def set_location(location)
+    google = Google.new(location)
+    coords = google.center
+    return nil unless coords
+    @lat = coords['lat']
+    @lng = coords['lng']
+    bounds = google.bounds
+    # 88024
+    return nil unless bounds
+    @ne_lat = bounds['northeast']['lat']
+    @ne_lng = bounds['northeast']['lng']
+    @sw_lat = bounds['southwest']['lat']
+    @sw_lng = bounds['southwest']['lng']
+  end
+
   def set_user(current_user)
     page_user = current_user || User.new
     @user = UserDecorator.new(page_user)
+    # Does not belong here - remove/abstract - 3 cards
     @high_incomes = []
     @low_incomes = []
     @highest_pops = []
