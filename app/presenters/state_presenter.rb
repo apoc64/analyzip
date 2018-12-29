@@ -12,8 +12,8 @@ class StatePresenter < Presenter
     set_user(current_user)
 
     @basic_irs_card = irs_card_presenter
-    @high_incomes = find_high_incomes
-    @low_incomes = find_low_incomes
+    @card2 = find_high_incomes
+    @card3 = find_low_incomes
     set_location(name)
   end
 
@@ -24,12 +24,12 @@ class StatePresenter < Presenter
   private
 
   def find_high_incomes
-    cp = CardPresenter.new('Highest Incomes', 'high-incomes')
+    cp = CardPresenter.new('Highest Incomes', 'card-2')
     set_currency_collection(cp, @state.high_incomes, ZipDecorator)
   end
 
   def find_low_incomes
-    cp = CardPresenter.new('Lowest Incomes', 'low-incomes')
+    cp = CardPresenter.new('Lowest Incomes', 'card-3')
     set_currency_collection(cp, @state.low_incomes, ZipDecorator)
   end
 

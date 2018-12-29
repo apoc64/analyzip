@@ -9,32 +9,28 @@
   const sw_lat = <%= @presenter.sw_lat %>;
   const sw_lng = <%= @presenter.sw_lng %>;
   const title = "<%= @presenter.map_name %>"
+  const geoUnit = "<%= @presenter.geo_unit %>"
 
-  var highIncomes = [];
-  var lowIncomes = [];
-  var prematureDeath = [];
-  var lowBirthWeight = [];
-  var diabetesPrevalence = [];
-  var highPopulations = [];
+  var card1Items = [];
+  var card2Items = [];
+  var card3Items = [];
 
-  <% @presenter.high_incomes.each do |zip| %>
-    highIncomes.push("<%= zip.code %>")
+  <% @presenter.card1.each do |location| %>
+    card1Items.push("<%= location.name %>")
+    console.log(location);
   <% end %>
-  <% @presenter.low_incomes.each do |zip| %>
-    lowIncomes.push("<%= zip.code %>")
+  var card1Title = "<%= @presenter.card1.title %>"
+
+  <% @presenter.card2.each do |location| %>
+    card2Items.push("<%= location.name %>")
   <% end %>
-  <% @presenter.premature_deaths.each do |zip| %>
-    prematureDeath.push("<%= zip.code %>")
+  var card2Title = "<%= @presenter.card2.title %>"
+
+  <% @presenter.card3.each do |location| %>
+    card3Items.push("<%= location.name %>")
   <% end %>
-  <% @presenter.low_birth_weights.each do |zip| %>
-    lowBirthWeight.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.diabetes_prevalences.each do |zip| %>
-    diabetesPrevalence.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.highest_pops.each do |zip| %>
-    highPopulations.push("<%= zip.code %>")
-  <% end %>
+  var card3Title = "<%= @presenter.card3.title %>"
+
 </script>
 
 <%= javascript_include_tag 'maps' %>
