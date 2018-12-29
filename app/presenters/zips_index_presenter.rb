@@ -2,10 +2,13 @@ class ZipsIndexPresenter < Presenter
   def initialize(current_user)
     set_user(current_user)
     set_default_map
-
     @card1 = find_high_incomes
     @card2 = find_low_incomes
     @card3 = find_high_pops
+  end
+
+  def page_title
+    'US Zip Codes - AnalyZip'
   end
 
   private

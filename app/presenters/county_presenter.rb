@@ -10,15 +10,17 @@ class CountyPresenter < Presenter
   def initialize(county_id, current_user)
     @county = County.find(county_id)
     set_user(current_user)
-
+    set_location(google_map_name)
     @health_card = health_card_presenter
     @socio_economic_card = socio_economic_presenter
-
-    set_location(google_map_name)
   end
 
   def map_name
     "#{name}, #{state.abbreviation}"
+  end
+
+  def page_title
+    "#{map_name} - AnalyZip"
   end
 
   def google_map_name

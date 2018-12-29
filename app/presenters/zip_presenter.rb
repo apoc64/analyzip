@@ -9,12 +9,16 @@ class ZipPresenter < Presenter
   def initialize(zip_code, current_user)
     @zip = Zip.find(zip_code)
     set_user(current_user)
-    @basic_irs_card = irs_card_presenter
     set_location(zip.code)
+    @basic_irs_card = irs_card_presenter
   end
 
   def state_name
     @zip.state.name || @zip.state.abbreviation
+  end
+
+  def page_title
+    "#{code} zip code in #{state_name} - AnalyZip"
   end
 
   def favorite

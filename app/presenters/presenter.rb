@@ -15,10 +15,12 @@ class Presenter
               :sw_lat,
               :sw_lng,
               :map_name,
-              :geo_unit,
-              :card1,
-              :card2,
-              :card3
+              :geo_unit
+
+  def set_user(current_user)
+    page_user = current_user || User.new
+    @user = UserDecorator.new(page_user)
+  end
 
   def set_location(location, geo_unit = 'zip codes')
     google = Google.new(location)
@@ -37,14 +39,16 @@ class Presenter
     @map_name = location
   end
 
-  def set_user(current_user)
-    page_user = current_user || User.new
-    @user = UserDecorator.new(page_user)
-    # Does not belong here - remove/abstract - 3 cards
-    # Temp - Remove
-    @card1 = CardPresenter.new('')
-    @card2 = CardPresenter.new('')
-    @card3 = CardPresenter.new('')
+  def card1
+    @card1 ||= CardPresenter.new('')
+  end
+
+  def card2
+    @card2 ||= CardPresenter.new('')
+  end
+
+  def card3
+    @card3 ||= CardPresenter.new('')
   end
 
   def set_default_map(geo_unit = 'zip codes')

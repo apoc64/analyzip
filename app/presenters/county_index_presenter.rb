@@ -1,14 +1,16 @@
 class CountyIndexPresenter < Presenter
-
   attr_reader :name
 
   def initialize(current_user)
     set_user(current_user)
+    set_default_map('counties')
     @card1 = find_premature_deaths
     @card2 = find_low_birth_weight
     @card3 = find_diabetes
+  end
 
-    set_default_map('counties')
+  def page_title
+    'US Counties - AnalyZip'
   end
 
   private
