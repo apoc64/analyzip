@@ -8,7 +8,7 @@ class CountyIndexPresenter < Presenter
     @card2 = find_low_birth_weight
     @card3 = find_diabetes
 
-    set_default_map
+    set_default_map('counties')
   end
 
   private

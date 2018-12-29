@@ -13,10 +13,6 @@ const bounds = {
   west: sw_lng
 }
 
-if(!geoUnit) {
-  var geoUnit = "zip codes"
-}
-
 function initMap() {
   var options = {
     zoom: 7,

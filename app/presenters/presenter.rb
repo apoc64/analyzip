@@ -15,11 +15,12 @@ class Presenter
               :sw_lat,
               :sw_lng,
               :map_name,
+              :geo_unit,
               :card1,
               :card2,
               :card3
 
-  def set_location(location)
+  def set_location(location, geo_unit = 'zip codes')
     google = Google.new(location)
     coords = google.center
     return nil unless coords
@@ -32,6 +33,8 @@ class Presenter
     @ne_lng = bounds['northeast']['lng']
     @sw_lat = bounds['southwest']['lat']
     @sw_lng = bounds['southwest']['lng']
+    @geo_unit = geo_unit
+    @map_name = location
   end
 
   def set_user(current_user)
@@ -44,15 +47,15 @@ class Presenter
     @card3 = CardPresenter.new('')
   end
 
-  def set_default_map
+  def set_default_map(geo_unit = 'zip codes')
     @lat = 40
     @lng = -85
     @ne_lat = 50
     @ne_lng = -70
     @sw_lat = 30
     @sw_lng = -120
-    @name = 'United States'
-    @map_name = 'United States'
+    @map_name = 'the United States'
+    @geo_unit = geo_unit
   end
 
   def page_title

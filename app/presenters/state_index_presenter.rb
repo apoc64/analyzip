@@ -9,7 +9,7 @@ class StateIndexPresenter < Presenter
     @card3 = find_high_pops
     @states = State.select('id, name, abbreviation')
 
-    set_default_map
+    set_default_map('states')
   end
 
   def page_title
