@@ -20,7 +20,10 @@ class Presenter
               :premature_deaths,
               :low_birth_weights,
               :diabetes_prevalences,
-              :highest_pops
+              :highest_pops,
+              :card1,
+              :card2,
+              :card3
 
   def set_location(location)
     google = Google.new(location)
@@ -47,6 +50,10 @@ class Presenter
     @premature_deaths = []
     @low_birth_weights = []
     @diabetes_prevalences = []
+    # Temp - Remove
+    @card1 = CardPresenter.new('')
+    @card2 = CardPresenter.new('')
+    @card3 = CardPresenter.new('')
   end
 
   def set_default_map

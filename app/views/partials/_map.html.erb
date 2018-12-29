@@ -16,6 +16,25 @@
   var lowBirthWeight = [];
   var diabetesPrevalence = [];
   var highPopulations = [];
+  var card1Items = [];
+  var card2Items = [];
+  var card3Items = [];
+
+  <% @presenter.card1.each do |location| %>
+    card1Items.push("<%= location.name %>")
+    console.log(location);
+  <% end %>
+  var card1Title = "<%= @presenter.card1.title %>"
+
+  <% @presenter.card2.each do |location| %>
+    card2Items.push("<%= location.name %>")
+  <% end %>
+  var card2Title = "<%= @presenter.card2.title %>"
+
+  <% @presenter.card3.each do |location| %>
+    card3Items.push("<%= location.name %>")
+  <% end %>
+  var card3Title = "<%= @presenter.card3.title %>"
 
   <% @presenter.high_incomes.each do |zip| %>
     highIncomes.push("<%= zip.code %>")

@@ -95,6 +95,27 @@ links.forEach(function(link) {
 })
 
 // Event listeners for cards:
+if(!(card1Items === undefined || card1Items.length == 0)) {
+  const card1 = document.querySelector('.card-1');
+  card1.addEventListener('click', function() {
+    placeMarkers(card1Items, card1Title)
+  }) // end card 1 event listener
+} // end if card 1 Items
+
+if(!(card2Items === undefined || card2Items.length == 0)) {
+  const card2 = document.querySelector('.card-2');
+  card2.addEventListener('click', function() {
+    placeMarkers(card2Items, card2Title)
+  }) // end card 1 event listener
+} // end if card 1 Items
+
+if(!(card3Items === undefined || card3Items.length == 0)) {
+  const card3 = document.querySelector('.card-3');
+  card3.addEventListener('click', function() {
+    placeMarkers(card3Items, card3Title)
+  }) // end card 1 event listener
+} // end if card 1 Items
+
 if(!(highIncomes === undefined || highIncomes.length == 0)) {
   const highIncomeCard = document.querySelector('.high-incomes');
   highIncomeCard.addEventListener('click', function() {
