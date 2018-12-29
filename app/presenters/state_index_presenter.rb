@@ -4,9 +4,9 @@ class StateIndexPresenter < Presenter
 
   def initialize(current_user)
     set_user(current_user)
-    @high_incomes = find_high_incomes
-    @low_incomes = find_low_incomes
-    @highest_pops = find_high_pops
+    @card1 = find_high_incomes
+    @card2 = find_low_incomes
+    @card3 = find_high_pops
     @states = State.select('id, name, abbreviation')
 
     set_default_map

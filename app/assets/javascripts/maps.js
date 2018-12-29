@@ -116,48 +116,6 @@ if(!(card3Items === undefined || card3Items.length == 0)) {
   }) // end card 1 event listener
 } // end if card 1 Items
 
-if(!(highIncomes === undefined || highIncomes.length == 0)) {
-  const highIncomeCard = document.querySelector('.high-incomes');
-  highIncomeCard.addEventListener('click', function() {
-    placeMarkers(highIncomes, "Highest income")
-  }) // end high incomes event listener
-} // end if high incomes
-
-if(!(lowIncomes === undefined || lowIncomes.length == 0)) {
-  const lowIncomeCard = document.querySelector('.low-incomes');
-  lowIncomeCard.addEventListener('click', function() {
-    placeMarkers(lowIncomes, "Lowest income")
-  }) // end high incomes event listener
-} // end if high incomes
-
-if(!(prematureDeath === undefined || prematureDeath.length == 0)) {
-  const prematureDeathCard = document.querySelector('.premature-death');
-  prematureDeathCard.addEventListener('click', function() {
-    placeMarkers(prematureDeath, "Highest rates of premature death")
-  })
-}
-
-if(!(lowBirthWeight === undefined || lowBirthWeight.length == 0)) {
-  const lowBirthWeightCard = document.querySelector('.low-birth-weight');
-  lowBirthWeightCard.addEventListener('click', function() {
-    placeMarkers(lowBirthWeight, "Highest percentage of low birth weight")
-  })
-}
-
-if(!(diabetesPrevalence === undefined || diabetesPrevalence.length == 0)) {
-  const diabetesPrevalenceCard = document.querySelector('.diabetes');
-  diabetesPrevalenceCard.addEventListener('click', function() {
-    placeMarkers(diabetesPrevalence, "Highest rates of diabetes")
-  })
-}
-
-if(!(highPopulations === undefined || highPopulations.length == 0)) {
-  const highPopulationsCard = document.querySelector('.highest-pops');
-  highPopulationsCard.addEventListener('click', function() {
-    placeMarkers(highPopulations, `Highest population`)
-  })
-}
-
 function placeMarkers(cardData, message) {
   if(!linkClicked) {
     setMarkers(cardData)

@@ -4,9 +4,9 @@ class CountyIndexPresenter < Presenter
 
   def initialize(current_user)
     set_user(current_user)
-    @premature_deaths = find_premature_deaths
-    @low_birth_weights = find_low_birth_weight
-    @diabetes_prevalences = find_diabetes
+    @card1 = find_premature_deaths
+    @card2 = find_low_birth_weight
+    @card3 = find_diabetes
 
     set_default_map
   end

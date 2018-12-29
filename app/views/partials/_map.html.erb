@@ -10,12 +10,6 @@
   const sw_lng = <%= @presenter.sw_lng %>;
   const title = "<%= @presenter.map_name %>"
 
-  var highIncomes = [];
-  var lowIncomes = [];
-  var prematureDeath = [];
-  var lowBirthWeight = [];
-  var diabetesPrevalence = [];
-  var highPopulations = [];
   var card1Items = [];
   var card2Items = [];
   var card3Items = [];
@@ -36,24 +30,6 @@
   <% end %>
   var card3Title = "<%= @presenter.card3.title %>"
 
-  <% @presenter.high_incomes.each do |zip| %>
-    highIncomes.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.low_incomes.each do |zip| %>
-    lowIncomes.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.premature_deaths.each do |zip| %>
-    prematureDeath.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.low_birth_weights.each do |zip| %>
-    lowBirthWeight.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.diabetes_prevalences.each do |zip| %>
-    diabetesPrevalence.push("<%= zip.code %>")
-  <% end %>
-  <% @presenter.highest_pops.each do |zip| %>
-    highPopulations.push("<%= zip.code %>")
-  <% end %>
 </script>
 
 <%= javascript_include_tag 'maps' %>

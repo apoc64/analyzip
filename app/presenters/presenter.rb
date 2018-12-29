@@ -15,12 +15,6 @@ class Presenter
               :sw_lat,
               :sw_lng,
               :map_name,
-              :high_incomes,
-              :low_incomes,
-              :premature_deaths,
-              :low_birth_weights,
-              :diabetes_prevalences,
-              :highest_pops,
               :card1,
               :card2,
               :card3
@@ -44,12 +38,6 @@ class Presenter
     page_user = current_user || User.new
     @user = UserDecorator.new(page_user)
     # Does not belong here - remove/abstract - 3 cards
-    @high_incomes = []
-    @low_incomes = []
-    @highest_pops = []
-    @premature_deaths = []
-    @low_birth_weights = []
-    @diabetes_prevalences = []
     # Temp - Remove
     @card1 = CardPresenter.new('')
     @card2 = CardPresenter.new('')

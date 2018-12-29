@@ -12,8 +12,8 @@ class StatePresenter < Presenter
     set_user(current_user)
 
     @basic_irs_card = irs_card_presenter
-    @high_incomes = find_high_incomes
-    @low_incomes = find_low_incomes
+    @card2 = find_high_incomes
+    @card3 = find_low_incomes
     set_location(name)
   end
 

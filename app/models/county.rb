@@ -16,8 +16,4 @@ class County < ApplicationRecord
   def self.diabetes
     County.select('id, measure_60_value AS raw_value, county, state_id').where('measure_60_value > 0').order('measure_60_value DESC').limit(10)
   end
-
-  def code
-    name
-  end
 end
