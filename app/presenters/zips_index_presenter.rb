@@ -1,8 +1,4 @@
 class ZipsIndexPresenter < Presenter
-  attr_reader :high_incomes,
-              :low_incomes,
-              :highest_pops
-
   def initialize(current_user)
     set_user(current_user)
     set_default_map

@@ -1,8 +1,5 @@
 class StateIndexPresenter < Presenter
-  attr_reader :high_incomes,
-              :low_incomes,
-              :highest_pops,
-              :states,
+  attr_reader :states,
               :name
 
   def initialize(current_user)

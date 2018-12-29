@@ -1,9 +1,6 @@
 class CountyIndexPresenter < Presenter
 
-  attr_reader :premature_death,
-              :low_birth_weight,
-              :diabetes,
-              :name
+  attr_reader :name
 
   def initialize(current_user)
     set_user(current_user)
