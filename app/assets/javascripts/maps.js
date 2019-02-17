@@ -115,6 +115,9 @@ if(!(card3Items === undefined || card3Items.length == 0)) {
 function placeMarkers(cardData, message) {
   if(!linkClicked) {
     setMarkers(cardData)
+    if(message[message.length - 1] == 's') {
+      message = message.slice(0, -1);
+    }
     mapInfo.innerHTML = `<h6 class="center">${message} ${geoUnit} in ${title}:</h6>`
     map.fitBounds(bounds, -10)
   }
