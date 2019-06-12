@@ -7,7 +7,7 @@ describe 'user visits zip show page' do
     allow_any_instance_of(Google).to receive(:center).and_return({'lat' => 0, 'lng' => 0})
     allow_any_instance_of(Google).to receive(:bounds).and_return({'northeast' => {'lat' => 0, 'lng' => 0}, 'southwest' => {'lat' => 0, 'lng' => 0}})
 
-    visit zip_path(zip)
+    visit zip_path(zip.code)
 
     expect(page).to have_content(zip.id)
     expect(page).to have_link(zip.state.abbreviation)
@@ -38,7 +38,7 @@ describe 'user visits zip show page' do
     allow_any_instance_of(Google).to receive(:center).and_return({'lat' => 0, 'lng' => 0})
     allow_any_instance_of(Google).to receive(:bounds).and_return({'northeast' => {'lat' => 0, 'lng' => 0}, 'southwest' => {'lat' => 0, 'lng' => 0}})
 
-    visit zip_path(zip)
+    visit zip_path(zip.code)
 
     expect(page).to_not have_link('Login or Sign Up to add this zip to my favorites')
     # fill_in 'user_zip[comment]', with: 'I like this zip'

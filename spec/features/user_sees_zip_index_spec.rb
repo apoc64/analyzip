@@ -12,11 +12,11 @@ describe 'user visits zip index page' do
     visit zips_path
 
     expect(page).to have_content("Highest Incomes:\n#{zip2.code}: $1,000,000")
-    expect(page).to have_link(zip1.id)
+    expect(page).to have_link(zip1.code)
     expect(page).to have_content("Lowest Incomes:\n#{zip1.code}: $200,000")
-    expect(page).to have_link(zip2.id)
+    expect(page).to have_link(zip2.code)
     expect(page).to have_content("Highest Pops:\n#{zip3.code}: 5,100")
-    expect(page).to have_link(zip2.id)
+    expect(page).to have_link(zip2.code)
   end
 
   it 'does not round incomes' do
@@ -28,7 +28,7 @@ describe 'user visits zip index page' do
     visit zips_path
 
     expect(page).to have_content("Highest Incomes:\n#{zip.code}: $1,007,671")
-    expect(page).to have_link(zip.id)
+    expect(page).to have_link(zip.code)
     expect(page).to have_content("Lowest Incomes:\n#{zip.code}: $1,007,671")
     expect(page).to have_content("Highest Pops:\n#{zip.code}: 5,175")
   end
