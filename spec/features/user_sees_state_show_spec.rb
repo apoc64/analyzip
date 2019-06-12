@@ -13,9 +13,9 @@ describe 'user visits state show page' do
     visit state_path(state)
 
     expect(page).to have_content(state.abbreviation)
-    expect(page).to have_link(zip1.id)
-    expect(page).to have_link(zip2.id)
-    expect(page).to_not have_link(zip3.id)
+    expect(page).to have_link(zip1.code)
+    expect(page).to have_link(zip2.code)
+    expect(page).to_not have_link(zip3.code)
 
     expect(page).to have_content('No. of Returns: 15,000')
     expect(page).to have_content("Percent Single: #{((state.mars1.to_f / state.n1.to_f) * 100).to_i}")
@@ -41,8 +41,8 @@ describe 'user visits state show page' do
     visit state_path(state)
 
     expect(page).to have_content("Highest Incomes:\n#{zip2.id}: $1,500,000")
-    expect(page).to have_link(zip1.id)
+    expect(page).to have_link(zip1.code)
     expect(page).to have_content("Lowest Incomes:\n#{zip1.id}: $1,250,000")
-    expect(page).to have_link(zip2.id)
+    expect(page).to have_link(zip2.code)
   end
 end
