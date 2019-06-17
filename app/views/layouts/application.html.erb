@@ -61,19 +61,22 @@
     <li><%= link_to 'Zip Codes', zips_path %></li>
   </ul>
 
+  <%= javascript_include_tag 'application' %>
+  <% flash.each do |type, message| %>
+  <script>
+    $(function() {
+      M.toast({html: "<p><%= message %></p>"});
+    });
+  </script>
+<% end %>
+
   <div class="container">
-    <%= javascript_include_tag 'application' %>
-    <script>
-      M.toast({<%= alert %>})
-      M.toast({<%= notice %>})
-    </script>
     <%= yield %>
   </div>
 
   <footer class="teal darken-4 white-text center">
     <p>AnalyZip</p>
   </footer>
-
 
 </body>
 </html>
