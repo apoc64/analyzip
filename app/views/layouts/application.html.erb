@@ -10,8 +10,8 @@
 
       gtag('config', 'UA-131085760-1');
     </script>
-    <title><%= @presenter.page_title %></title>
-    <meta name="description" content="<%= @presenter.page_description %>">
+    <title><%= "@presenter.page_title" %></title>
+    <meta name="description" content="<%= "@presenter.page_description" %>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -33,8 +33,13 @@
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
-            <li><%= link_to @presenter.user_action, @presenter.current_user_path %></li>
-            <li><%= link_to @presenter.log_action, @presenter.log_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "My Profile", edit_user_registration_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
             <li><%= link_to 'States', states_path %></li>
             <li><%= link_to 'Counties', counties_path %></li>
             <li><%= link_to 'Zip Codes', zips_path %></li>
@@ -44,14 +49,24 @@
     </nav>
   </div>
   <ul class="sidenav" id="mobile-nav">
-    <li><%= link_to @presenter.user_action, @presenter.current_user_path %></li>
-    <li><%= link_to @presenter.log_action, @presenter.log_path %></li>
+    <% if user_signed_in? %>
+      <li><%= link_to "My Profile", edit_user_registration_path %></li>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <li><%= link_to "Login", new_user_session_path %></li>
+    <% end %>
     <li><%= link_to 'States', states_path %></li>
     <li><%= link_to 'Counties', counties_path %></li>
     <li><%= link_to 'Zip Codes', zips_path %></li>
   </ul>
 
   <div class="container">
+    <%= javascript_include_tag 'application' %>
+    <script>
+      M.toast({<%= alert %>})
+      M.toast({<%= notice %>})
+    </script>
     <%= yield %>
   </div>
 
@@ -59,7 +74,6 @@
     <p>AnalyZip</p>
   </footer>
 
-  <%= javascript_include_tag 'application' %>
 
 </body>
 </html>
