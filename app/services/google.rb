@@ -1,3 +1,5 @@
+include ERB::Util
+
 class Google
   def initialize(location)
     @location = validate_location(location)
@@ -29,12 +31,17 @@ class Google
   end
 
   def get_results
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{location}&key=#{Rails.application.credentials.google[:api_key]}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{url_encode(location)}&key=#{Rails.application.credentials.google[:api_key]}"
     HTTParty.get(url)
   end
 
   def invalid
-    response["status"] == 'ZERO_RESULTS'
+    status = response['status']
+    is_valid = response["status"] == 'ZERO_RESULTS' || response["status"] == 'INVALID_REQUEST' || response["status"] == 'OVER_QUERY_LIMIT' || response["status"] == 'REQUEST_DENIED' || response["status"] == 'UNKNOWN_ERROR'
+    if is_valid
+      puts "Google API error: #{status}"
+    end
+    is_valid
   end
 
   def validate_location(location)

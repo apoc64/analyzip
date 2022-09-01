@@ -10,7 +10,7 @@ class StatePresenter < Presenter
   def initialize(state_id, current_user)
     @state = State.find(state_id)
     set_user(current_user)
-    set_location(name)
+    set_location(name, 'states')
     @basic_irs_card = irs_card_presenter
     @card2 = find_high_incomes
     @card3 = find_low_incomes
