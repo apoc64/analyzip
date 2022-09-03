@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131085760-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-131085760-1');
-    </script>
     <title><%= @presenter.page_title %></title>
     <meta name="description" content="<%= @presenter.page_description %>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +10,7 @@
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <%= favicon_link_tag asset_path('favicon.svg') %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://cdn.usefathom.com/script.js" data-site="ADBFFAKL" defer></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
