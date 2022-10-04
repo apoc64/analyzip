@@ -23,7 +23,7 @@ describe 'Google service' do
 
     expect(center).to eq({"lat" => 44.3148443,
        "lng" => -85.60236429999999})
-    expect(bounds).to eq({"northeast" => {"lat"=>48.3060628, "lng"=>-82.1229709},
+    expect(bounds).to eq({"northeast" => {"lat"=>48.3056044, "lng"=>-82.1229766},
        "southwest" => {"lat"=>41.696118, "lng"=>-90.4181358}})
   end
 
@@ -33,6 +33,6 @@ describe 'Google service' do
     bounds = google.bounds
 
     expect(center).to eq({"lat"=>43.2994285, "lng"=>-74.21793260000001})
-    expect(bounds).to eq({"northeast"=>{"lat"=>45.015865, "lng"=>-71.777491}, "southwest"=>{"lat"=>40.4773991, "lng"=>-79.7625901}})
+    expect(bounds).to eq({"northeast"=>{"lat"=>45.015861, "lng"=>-71.777491}, "southwest"=>{"lat"=>40.4773991, "lng"=>-79.7625901}})
   end
 end
